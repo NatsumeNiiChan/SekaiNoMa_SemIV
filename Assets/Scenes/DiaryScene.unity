@@ -316,7 +316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4fc7e7c73d245004486e462be0fe1e4c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85a1d91f3b6f8fb4887fd4434403e609, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -732,8 +732,8 @@ MonoBehaviour:
     Arashi a lot, and maybe there's will a good outcome, and he'll forget his ex-girlfriend.
     I would begrudge him that!\r\nWell, that's the end of my first week at Sekai
     no Ma restaurant, and it ends with great success! It was great fun and I've learned
-    so much! I already know that I won't want to leave at the end of the month.\r\n
-    \r\nGoodbye and have a wonderful weekend too!\r"
+    so much! I already know that I won't want to leave at the end of the month.\r\n\r\nGoodbye
+    and have a wonderful weekend too!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
   m_sharedMaterial: {fileID: -3680434139645888979, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
@@ -1125,7 +1125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &372546746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1669,7 +1669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &411889835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2252,8 +2252,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -356.859, y: -0.00010753}
-  m_SizeDelta: {x: 576.695, y: 869.71}
+  m_AnchoredPosition: {x: -356.859, y: 4.692}
+  m_SizeDelta: {x: 576.695, y: 879.094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667057699
 MonoBehaviour:
@@ -2275,19 +2275,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Later, Makoto was there. A Nekomata who complained to me about how difficult
-    it was for him and how lucky I was to be a Bakeneko because for me it\xB4s easier
-    to walk on two legs. Nekomatas and Bakenekos are often confused with each other,
-    although Nekomatas are just slightly larger cats and have two tails, while Bakenekos
-    can grow to be as large as humans.\r\nThe differences in our powers are also
-    strong. Nekomatas can transform themselves into old women and cast black magic
-    spells, while Bakenekos are particularly good at necromancy.\r\nOk fine. I see
-    why we are confused. But I'm a halfling anyway, so it's different again. I'm
-    only half Bakeneko, and it's hard to keep my ears hidden from humans. But I'm
-    not complaining. I would hate to always walk on four paws around humans, so I
-    have to agree with Makoto, for me it\xB4s easier in the human world than for
-    him. Although it would be nice not to be looked at crookedly when I jump over
-    house roofs...\r\n"
+  m_text: "\t\t   Later, Makoto was there. A Nekomata who \t\t\t  complained to me
+    about how difficult it was for \t\t\thim and how lucky I was to be a Bakeneko
+    because for me it\xB4s easier to walk on two legs. Nekomatas and Bakenekos are
+    often confused with each other, although Nekomatas are just slightly larger cats
+    and have two tails, while Bakenekos can grow to be as large as humans.\r\nThe
+    differences in our powers are also strong. Nekomatas can transform themselves
+    into old women and cast black magic spells, while Bakenekos are particularly
+    good at necromancy.\r\nOk fine. I see why we are confused. But I'm a halfling
+    anyway, so it's different again. I'm only half Bakeneko, and it's hard to keep
+    my ears hidden from humans. But I'm not complaining. I would hate to always walk
+    on four paws around humans, so I have to agree with Makoto, for me it's easier
+    in the human world than for him. Although it would be nice not to be looked at
+    crookedly when I jump over house roofs...\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
   m_sharedMaterial: {fileID: -3680434139645888979, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
@@ -2379,7 +2379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711807116
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2782,12 +2782,12 @@ MonoBehaviour:
     all of his new master's wishes.\r\n \r\nK:\r\nKaeru nyobo:\r\nA Yokai in the
     form of a frog who transforms \ninto a housewife to marry men. They are weaker
     \nand smaller than humans, so they only do simple \njobs. As long as the man
-    doesn't discover that his wife is actually a frog, they will have a happy marriage.\r\n
-    \r\nKuchisake-onna:\r\nA Yokai with a slashed mouth who stalks children \nand
-    young men in particular to play a \nquestion-and-answer game with their victims.
-    \nHowever, the victim can only lose. She asks if \nthe victim thinks she's beautiful,
-    and if the \nanswer is yes, the person's face will be cut \nup just like Kuchisake-onna's.
-    If the answer is \nno, the victim is killed.\r"
+    doesn't discover that his wife is actually a frog, they will have a happy marriage.\r\n\r\nKuchisake-onna:\r\nA
+    Yokai with a slashed mouth who stalks children \nand young men in particular
+    to play a \nquestion-and-answer game with their victims. \nHowever, the victim
+    can only lose. She asks if \nthe victim thinks she's beautiful, and if the \nanswer
+    is yes, the person's face will be cut \nup just like Kuchisake-onna's. If the
+    answer is \nno, the victim is killed.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
   m_sharedMaterial: {fileID: -3680434139645888979, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
@@ -4570,7 +4570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1214655172
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4751,7 +4751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1247553602
 RectTransform:
   m_ObjectHideFlags: 0
