@@ -7,6 +7,7 @@ TagManager:
   - Dice
   - Text
   - Cupboard_Door
+  - DiaryPages
   layers:
   - Default
   - TransparentFX
@@ -56,6 +57,9 @@ TagManager:
   - name: Ingredients
     uniqueID: 787157455
     locked: 0
+  - name: Cupboard_Doors
+    uniqueID: 1910766023
+    locked: 0
   - name: Additives
     uniqueID: 1582261355
     locked: 0
@@ -64,7 +68,4 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 659401367
-    locked: 0
-  - name: Cupboard_Doors
-    uniqueID: 1910766023
     locked: 0
