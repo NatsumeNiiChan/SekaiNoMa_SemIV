@@ -651,7 +651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9126a767c721a964c9a0d5f1f2767b01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 835967b60ad9ab641bf949386be34ae5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1125,7 +1125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &372546746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2560,6 +2560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 751850858}
   - component: {fileID: 751850857}
+  - component: {fileID: 751850859}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2644,6 +2645,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &751850859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751850856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &757172984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,18 +4449,30 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Then I spoke to Noriko. I was still a bit down because introducing Akemi
-    and Takeru to each other didn't work out. I wanted to know how Noriko knew her
-    husband was the right one. She said that you have to complement each other.\r\nAnd
+  m_text: 'Then I spoke to Noriko. I was still a bit down because introducing Akemi
+    and Takeru to each other didn''t work out. I wanted to know how Noriko knew her
+    husband was the right one. She said that you have to complement each other.
+
+    And
     then it clicked for me. Takeru likes flowers because he admires their beauty,
-    and Akemi doesn't want that. But I remembered her asking me about Mirai. The
-    two would complement each other perfectly!\r\nAnd then, and then, and theeeeeeen...\r\nBoth
+    and Akemi doesn''t want that. But I remembered her asking me about Mirai. The
+    two would complement each other perfectly!
+
+    And then, and then, and theeeeeeen...
+
+    Both
     came into the restaurant! It was perfect timing! I got them talking to each other,
     but they were both so shy! So, I grabbed a game to let them break the ice and
-    have some fun together! And it worked! It was so cute!\r\nI'm so happy! They
-    got along so well!\r\nAh, my second week ends just as well as my first! I'm so
-    happy! I can help Y\u014Dkai, meet wonderful people and even can cook. It's just
-    wonderful. I'm already looking forward to next week!\r\n"
+    have some fun together! And it worked! It was so cute!
+
+    I''m so happy! They
+    got along so well!
+
+    Ah, my second week ends just as well as my first! I''m
+    so happy! I can help Yokai, meet wonderful people and even can cook. It''s just
+    wonderful. I''m already looking forward to next week!
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
   m_sharedMaterial: {fileID: -3680434139645888979, guid: 8ff53e578a7da5b47918830e56da594a, type: 2}
@@ -4751,7 +4784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1247553602
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6026,7 +6059,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7a945c46d5111014ca4e01fd5d03d9fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 896843f944521e94aadc70492266e8f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7273,7 +7306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a1f3430bb199f52469cca89abc57c7d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f74f846af6cdcda4abee171528093277, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
