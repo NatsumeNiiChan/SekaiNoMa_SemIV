@@ -6,15 +6,16 @@ using TMPro;
 
 public class Dice : MonoBehaviour
 {
+    //Scripts
+    //-
+
+//VARIABLES
+
     [Header("Dice")]
-    public GameObject[] _Dice;
-    [Space]
+    private GameObject[] A_Dice = new GameObject[3];
 
     [Header("DiceRotation")]
-    //Quaternion[] _DiceRotation;
-    //public int[] _DiceNumber;
-    //Change the 0 Values that allow rotation (that does not change the number on top)
-    //to be randomized instead of always 0 and therefore straight
+    //Dice Rotations 
     Quaternion Q_Dice_1 = Quaternion.Euler(90, 0, 0);
     Quaternion Q_Dice_2 = Quaternion.Euler(0, 0, -90);
     Quaternion Q_Dice_3 = Quaternion.Euler(180, 0, 0);
@@ -22,50 +23,47 @@ public class Dice : MonoBehaviour
     Quaternion Q_Dice_5 = Quaternion.Euler(0, 0, 90);
     Quaternion Q_Dice_6 = Quaternion.Euler(-90, 0, 0);
 
-    //public int _RandomY;
-    //public int _RandomX;
-    //public int _RandomZ;
-
     [Header("Random_Number")]
-    private int[] _Dice_Number = new int[3];
-    private int _Dice_Sum;
-    public TMP_Text _Txt_Dice_Sum;
+    private int[] _DiceNumber = new int[3];
+    private int   _DiceSum;
+    private TMP_Text Txt_DiceSum;
 
     [Header("Buttons")]
-    public Button _B_Even;
-    public Button _B_Odd;
-    public Button _B_NanamiTurn_Even;
-    public Button _B_NanamiTurn_Odd;
-    [Space]
-    public Button _B_NextRound;
+    private GameObject B_Player_Even;
+    private GameObject B_Player_Odd;
+    private GameObject B_Nanami_Even;
+    private GameObject B_Nanami_Odd;
+    private GameObject B_NextRound;
 
     [Header("ScoreCounters")]
     //Red = DANGER | Blue = SAFETY
-    private int _Player_RedToken = 0;
-    private int _Player_BlueToken = 10;
-    private int _Nanami_RedToken = 10;
-    private int _Nanami_BlueToken = 0;
+    private int _PlayerToken_Red = 0;
+    private int _PlayerToken_Blue = 10;
+    private int _NanamiToken_Red = 10;
+    private int _NanamiToken_Blue = 0;
     //ScoreCount Text
-    public TMP_Text _Txt_Player_RedToken;
-    public TMP_Text _Txt_Player_BlueToken;
-    public TMP_Text _Txt_Nanami_RedToken;
-    public TMP_Text _Txt_Nanami_BlueToken;
+    private TMP_Text Txt_PlayerToken_Red;
+    private TMP_Text Txt_PlayerToken_Blue;
+    private TMP_Text Txt_NanamiToken_Red;
+    private TMP_Text Txt_NanamiToken_Blue;
 
     [Header("EndScreens")]
-    public GameObject _WinningScreen;
-    public GameObject _LostScreen;
+    private GameObject _Screen_Win;
+    private GameObject _Screen_Loss;
 
     [Header("Bet Results")]
-    public TMP_Text _Txt_Nanmi_Bet;
-    public TMP_Text _Txt_Player_Bet;
+    private TMP_Text Txt_Bet_Nanami;
+    private TMP_Text Txt_Bet_Player;
 
-    //Buttons Player clicks
+    //Bools for Playerbets
     private bool _Even;
     private bool _Odd;
+
     //Random Even/Odd bool for nanamis bet
-    private bool _NanamiHasBet;
-    private bool _NanamiEvenBool;
-    private int _NanamiEvenInt;
+    private bool _Nanami_HasBet;
+    private bool _Nanami_Even_Bool;
+    private int  _Nanami_Even_Int;
+
     //bools for whose turn it is to bet first (player always starts in new round, nanami not)
     private bool _PlayerTurn = true;
     private bool _NanamiTurn = false;
@@ -74,7 +72,35 @@ public class Dice : MonoBehaviour
 //START
     void Start()
     {
-        //_BetSet = false;
+
+    //Finding Calls
+        
+        //Scripts
+        //GameObjects
+        FindingCall_Dice();
+        //Text
+        FindingCall_Txt();
+        //Buttons
+        FindingCall_Buttons();
+        //Other
+        FindingCall_Other();
+
+
+    
+
+    //DISABLE AFTER FINDING CALLS
+        //Screens
+        _Screen_Loss.SetActive(false);
+        _Screen_Win.SetActive(false);
+        //Buttons
+        B_NextRound.SetActive(false);
+        B_Nanami_Even.SetActive(false);
+        B_Nanami_Odd.SetActive(false);
+
+
+
+    //Other
+        //Bets = false;
         _Even = false;
         _Odd = false;
        
@@ -95,14 +121,14 @@ public class Dice : MonoBehaviour
     {
         _Even = true;
         _Odd = false;
-        _Txt_Player_Bet.text = "Player bet Even";
+        Txt_Bet_Player.text = "Player bet Even";
 
     } 
     public void _Bet_Odd()
     {
         _Odd = true;
         _Even = false;
-        _Txt_Player_Bet.text = "Player bet Odd";
+        Txt_Bet_Player.text = "Player bet Odd";
 
     }
 
@@ -122,46 +148,46 @@ public class Dice : MonoBehaviour
             {
                 //DiceRollAnimation
                 //Disable Even and Odd Buttons
-                _B_Odd.gameObject.SetActive(false);
-                _B_Even.gameObject.SetActive(false);
+                B_Player_Odd.gameObject.SetActive(false);
+                B_Player_Even.gameObject.SetActive(false);
 
                 // When _BetSet(Button clicked) true, then generate numbers (and roll dice)
-                // generate random number and place it on _Dice_Number
+                // generate random number and place it on _DiceNumber
                 // as many dice there are, as many dice numbers shall be generated
-                for (int i = 0; i < _Dice.Length; i++)
+                for (int i = 0; i < A_Dice.Length; i++)
                 {
-                    _Dice_Number[i] = Random.Range(1, 6);
-                    //Debug.Log(_Dice_Number[i]);
+                    _DiceNumber[i] = Random.Range(1, 6);
+                    //Debug.Log(_DiceNumber[i]);
 
                 }
 
 
                 //Dice Rotation
-                for (int k = 0; k < _Dice_Number.Length; k++)
+                for (int k = 0; k < _DiceNumber.Length; k++)
                 {
-                    if (_Dice_Number[k] == 1)
+                    if (_DiceNumber[k] == 1)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_1;
+                        A_Dice[k].transform.rotation = Q_Dice_1;
                     }
-                    else if (_Dice_Number[k] == 2)
+                    else if (_DiceNumber[k] == 2)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_2;
+                        A_Dice[k].transform.rotation = Q_Dice_2;
                     }
-                    else if (_Dice_Number[k] == 3)
+                    else if (_DiceNumber[k] == 3)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_3;
+                        A_Dice[k].transform.rotation = Q_Dice_3;
                     }
-                    else if (_Dice_Number[k] == 4)
+                    else if (_DiceNumber[k] == 4)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_4;
+                        A_Dice[k].transform.rotation = Q_Dice_4;
                     }
-                    else if (_Dice_Number[k] == 5)
+                    else if (_DiceNumber[k] == 5)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_5;
+                        A_Dice[k].transform.rotation = Q_Dice_5;
                     }
-                    else if (_Dice_Number[k] == 6)
+                    else if (_DiceNumber[k] == 6)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_6;
+                        A_Dice[k].transform.rotation = Q_Dice_6;
                     }
                 }
 
@@ -169,19 +195,19 @@ public class Dice : MonoBehaviour
                 //Random for Nanamis Bet
                 //Random number 1 or 2
                 //1 == odd | 2 == even
-                _NanamiEvenInt = Random.Range(1, 3);
-                if (_NanamiEvenInt == 1)
+                _Nanami_Even_Int = Random.Range(1, 3);
+                if (_Nanami_Even_Int == 1)
                 {
-                    _NanamiEvenBool = false;
-                    //Debug.Log(_NanamiEvenBool);
-                    _Txt_Nanmi_Bet.text = "Nanami bet Odd";
+                    _Nanami_Even_Bool = false;
+                    //Debug.Log(_Nanami_EvenBool);
+                    Txt_Bet_Nanami.text = "Nanami bet Odd";
 
                 }
-                else if (_NanamiEvenInt == 2)
+                else if (_Nanami_Even_Int == 2)
                 {
-                    _NanamiEvenBool = true;
-                    //Debug.Log(_NanamiEvenBool);
-                    _Txt_Nanmi_Bet.text = "Nanami bet Even";
+                    _Nanami_Even_Bool = true;
+                    //Debug.Log(_Nanami_EvenBool);
+                    Txt_Bet_Nanami.text = "Nanami bet Even";
 
                 }
 
@@ -189,9 +215,9 @@ public class Dice : MonoBehaviour
 
 
                 //Adding Numbers on Dice together and displaying in UI
-                foreach (int item in _Dice_Number)
+                foreach (int item in _DiceNumber)
                 {
-                    _Dice_Sum += item;
+                    _DiceSum += item;
 
                 }
 
@@ -199,7 +225,7 @@ public class Dice : MonoBehaviour
                 //Exchanging Tokens/Points between Player + Nanami depending on what they bet
 
 
-                _Txt_Dice_Sum.text = _Dice_Sum.ToString();
+                Txt_DiceSum.text = _DiceSum.ToString();
 
                 //Token Calculations + Endgame
                 TokenCalculation();
@@ -209,9 +235,9 @@ public class Dice : MonoBehaviour
                 _PlayerTurn = false;
                 _NanamiTurn = true;
 
-                _B_NextRound.gameObject.SetActive(true);
+                B_NextRound.gameObject.SetActive(true);
 
-                _Dice_Sum = 0;
+                _DiceSum = 0;
             }
 
         }
@@ -222,7 +248,7 @@ public class Dice : MonoBehaviour
     public void DiceRoll_Nanami()
     {
        
-       if (_PlayerTurn == false && _NanamiTurn == true && _NanamiHasBet == true)
+       if (_PlayerTurn == false && _NanamiTurn == true && _Nanami_HasBet == true)
        {
 
             
@@ -233,58 +259,58 @@ public class Dice : MonoBehaviour
             {
                 //DiceRollAnimation
                 //Disable Even and Odd Buttons
-                _B_NanamiTurn_Odd.gameObject.SetActive(false);
-                _B_NanamiTurn_Even.gameObject.SetActive(false);
+                B_Nanami_Odd.SetActive(false);
+                B_Nanami_Even.SetActive(false);
 
                 // When _BetSet(Button clicked) true, then generate numbers (and roll dice)
-                // generate random number and place it on _Dice_Number
+                // generate random number and place it on _DiceNumber
                 // as many dice there are, as many dice numbers shall be generated
-                for (int i = 0; i < _Dice.Length; i++)
+                for (int i = 0; i < A_Dice.Length; i++)
                 {
-                    _Dice_Number[i] = Random.Range(1, 6);
-                    //Debug.Log(_Dice_Number[i]);
+                    _DiceNumber[i] = Random.Range(1, 6);
+                    //Debug.Log(_DiceNumber[i]);
 
                 }
 
 
                 //Dice Rotation
-                for (int k = 0; k < _Dice_Number.Length; k++)
+                for (int k = 0; k < _DiceNumber.Length; k++)
                 {
-                    if (_Dice_Number[k] == 1)
+                    if (_DiceNumber[k] == 1)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_1;
+                        A_Dice[k].transform.rotation = Q_Dice_1;
                     }
-                    else if (_Dice_Number[k] == 2)
+                    else if (_DiceNumber[k] == 2)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_2;
+                        A_Dice[k].transform.rotation = Q_Dice_2;
                     }
-                    else if (_Dice_Number[k] == 3)
+                    else if (_DiceNumber[k] == 3)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_3;
+                        A_Dice[k].transform.rotation = Q_Dice_3;
                     }
-                    else if (_Dice_Number[k] == 4)
+                    else if (_DiceNumber[k] == 4)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_4;
+                        A_Dice[k].transform.rotation = Q_Dice_4;
                     }
-                    else if (_Dice_Number[k] == 5)
+                    else if (_DiceNumber[k] == 5)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_5;
+                        A_Dice[k].transform.rotation = Q_Dice_5;
                     }
-                    else if (_Dice_Number[k] == 6)
+                    else if (_DiceNumber[k] == 6)
                     {
-                        _Dice[k].transform.rotation = Q_Dice_6;
+                        A_Dice[k].transform.rotation = Q_Dice_6;
                     }
                 }
 
 
                 //Adding Numbers on Dice together and displaying in UI
-                foreach (int item in _Dice_Number)
+                foreach (int item in _DiceNumber)
                 {
-                    _Dice_Sum += item;
+                    _DiceSum += item;
 
                 }
 
-                _Txt_Dice_Sum.text = _Dice_Sum.ToString();
+                Txt_DiceSum.text = _DiceSum.ToString();
 
                 //Token Calculations + Endgame
                 TokenCalculation();
@@ -294,15 +320,15 @@ public class Dice : MonoBehaviour
                 _PlayerTurn = true;
                 _NanamiTurn = false;
 
-                _NanamiHasBet = false;
+                _Nanami_HasBet = false;
 
                 //Switch out the Buttons
                 
 
-                _B_Odd.gameObject.SetActive(true);
-                _B_Even.gameObject.SetActive(true);
+                B_Player_Odd.SetActive(true);
+                B_Player_Even.SetActive(true);
 
-                _Dice_Sum = 0;
+                _DiceSum = 0;
             }
 
         }
@@ -317,27 +343,27 @@ public class Dice : MonoBehaviour
         //Random for Nanamis Bet
         //Random number 1 or 2
         //1 == odd | 2 == even
-        _NanamiEvenInt = Random.Range(1, 3);
-        if (_NanamiEvenInt == 1)
+        _Nanami_Even_Int = Random.Range(1, 3);
+        if (_Nanami_Even_Int == 1)
         {
-            _NanamiEvenBool = false;
-            //Debug.Log(_NanamiEvenBool);
-            _Txt_Nanmi_Bet.text = "Nanami bet Odd";
+            _Nanami_Even_Bool = false;
+            //Debug.Log(_Nanami_EvenBool);
+            Txt_Bet_Nanami.text = "Nanami bet Odd";
 
         }
-        else if (_NanamiEvenInt == 2)
+        else if (_Nanami_Even_Int == 2)
         {
-            _NanamiEvenBool = true;
-            //Debug.Log(_NanamiEvenBool);
-            _Txt_Nanmi_Bet.text = "Nanami bet Even";
+            _Nanami_Even_Bool = true;
+            //Debug.Log(_Nanami_EvenBool);
+            Txt_Bet_Nanami.text = "Nanami bet Even";
         }
 
-        _B_NanamiTurn_Odd.gameObject.SetActive(true);
-        _B_NanamiTurn_Even.gameObject.SetActive(true);
+        B_Nanami_Odd.SetActive(true);
+        B_Nanami_Even.SetActive(true);
 
-        _B_NextRound.gameObject.SetActive(false);
+        B_NextRound.SetActive(false);
 
-        _NanamiHasBet = true;
+        _Nanami_HasBet = true;
 
     }
 
@@ -347,87 +373,87 @@ public class Dice : MonoBehaviour
     public void TokenCalculation()
     {
         //If DiceSum EVEN
-        if (_Dice_Sum % 2 == 0)
+        if (_DiceSum % 2 == 0)
         {
             //Both bet ODD
-            if (_Even == false && _NanamiEvenBool == false)
+            if (_Even == false && _Nanami_Even_Bool == false)
             {
                 //no trade
                 PrintTokenScores();
             }
             //Both bet EVEN
-            else if (_Even == true && _NanamiEvenBool == true)
+            else if (_Even == true && _Nanami_Even_Bool == true)
             {
                 //Player takes two Danger Tokens from Nanami
                 //Player gives two Safety Tokens to Nanami
-                _Player_RedToken += 2;
-                _Player_BlueToken -= 2;
+                _PlayerToken_Red += 2;
+                _PlayerToken_Blue -= 2;
                 //Nanami takes two Safety Tokens from Player
                 //Nanami gives two Danger Tokens to Player
-                _Nanami_RedToken -= 2;
-                _Nanami_BlueToken += 2;
+                _NanamiToken_Red -= 2;
+                _NanamiToken_Blue += 2;
                 PrintTokenScores();
             }
             //Player bet Odd, Nanami bet Even -> nanami Won
-            else if (_Even == false && _NanamiEvenBool == true)
+            else if (_Even == false && _Nanami_Even_Bool == true)
             {
                 //Player gives two Safety Tokens to Nanami                
-                _Player_BlueToken -= 2;
+                _PlayerToken_Blue -= 2;
 
                 //Nanami takes two Safety Tokens from Player
-                _Nanami_BlueToken += 2;
+                _NanamiToken_Blue += 2;
                 PrintTokenScores();
             }
             //Player bet Even, Nanami bet Odd -> player won
-            else if (_Even == true && _NanamiEvenBool == false)
+            else if (_Even == true && _Nanami_Even_Bool == false)
             {
                 //Player takes two Danger Tokens from Nanami
-                _Player_RedToken += 2;
+                _PlayerToken_Red += 2;
                 //Nanami gives two Danger Tokens to Player
-                _Nanami_RedToken -= 2;
+                _NanamiToken_Red -= 2;
                 PrintTokenScores();
             }
         }
 
         //If DiceSum ODD
-        else if (_Dice_Sum % 2 == 1)
+        else if (_DiceSum % 2 == 1)
         {
             //Both bet EVEN
-            if (_Even == true && _NanamiEvenBool == true)
+            if (_Even == true && _Nanami_Even_Bool == true)
             {
                 //no trade
                 PrintTokenScores();
             }
             //Both bet ODD
-            else if (_Even == false && _NanamiEvenBool == false)
+            else if (_Even == false && _Nanami_Even_Bool == false)
             {
                 //Player takes two Danger Tokens from Nanami
                 //Player gives two Safety Tokens to Nanami
-                _Player_RedToken += 2;
-                _Player_BlueToken -= 2;
+                _PlayerToken_Red += 2;
+                _PlayerToken_Blue -= 2;
                 //Nanami takes two Safety Tokens from Player
                 //Nanami gives two Danger Tokens to Player
-                _Nanami_RedToken -= 2;
-                _Nanami_BlueToken += 2;
+                _NanamiToken_Red -= 2;
+                _NanamiToken_Blue += 2;
                 PrintTokenScores();
             }
             //Player bet even, Nanami bet ODD -> nanami won
-            else if (_Even == true && _NanamiEvenBool == false)
+            else if (_Even == true && _Nanami_Even_Bool == false)
             {
                 //Player gives two Safety Tokens to Nanami                
-                _Player_BlueToken -= 2;
+                _PlayerToken_Blue -= 2;
 
                 //Nanami takes two Safety Tokens from Player
-                _Nanami_BlueToken += 2;
+                _NanamiToken_Blue += 2;
                 PrintTokenScores();
             }
             //Player bet odd, Nanami bet even -> player won
-            else if (_Even == false && _NanamiEvenBool == true)
+            else if (_Even == false && _Nanami_Even_Bool == true)
             {
                 //Player takes two Danger Tokens from Nanami
-                _Player_RedToken += 2;
+                _PlayerToken_Red += 2;
                 //Nanami gives two Danger Tokens to Player
-                _Nanami_RedToken -= 2;
+                _NanamiToken_Red -= 2;
                 PrintTokenScores();
             }
         }
@@ -437,37 +463,89 @@ public class Dice : MonoBehaviour
     //Write the Token scores into the UI
     public void PrintTokenScores()
     {
-        _Txt_Player_RedToken.text = _Player_RedToken.ToString();
-        _Txt_Player_BlueToken.text = _Player_BlueToken.ToString();
-        _Txt_Nanami_RedToken.text = _Nanami_RedToken.ToString();
-        _Txt_Nanami_BlueToken.text = _Nanami_BlueToken.ToString();
+        Txt_PlayerToken_Red.text = _PlayerToken_Red.ToString();
+        Txt_PlayerToken_Blue.text = _PlayerToken_Blue.ToString();
+        Txt_NanamiToken_Red.text = _NanamiToken_Red.ToString();
+        Txt_NanamiToken_Blue.text = _NanamiToken_Blue.ToString();
 
     }
 
     //Check if the Game has been Won or Lost
     public void FinishMinigame()
     {
-        if (_Player_RedToken == 10 && _Nanami_BlueToken == 10)
+        if (_PlayerToken_Red == 10 && _NanamiToken_Blue == 10)
         {
             Debug.Log("Game finished successfully: All Tokens traded");
-            _WinningScreen.SetActive(true);
+            _Screen_Win.SetActive(true);
         }
-        else if (_Player_RedToken == 10 && _Player_BlueToken == 10)
+        else if (_PlayerToken_Red == 10 && _PlayerToken_Blue == 10)
         {
             Debug.Log("Game failed: Player has all Tokens");
-            _LostScreen.SetActive(true);
+            _Screen_Loss.SetActive(true);
         }
-        else if (_Player_RedToken < 0 || _Player_BlueToken < 0 || _Nanami_BlueToken < 0 || _Nanami_RedToken < 0)
+        else if (_PlayerToken_Red < 0 || _PlayerToken_Blue < 0 || _NanamiToken_Blue < 0 || _NanamiToken_Red < 0)
         {
             Debug.Log("Game failed: No Tokens can be exchanged anymore");
-            _LostScreen.SetActive(true);
+            _Screen_Loss.SetActive(true);
 
         }
-        else if (_Nanami_RedToken == 10 && _Nanami_BlueToken == 10)
+        else if (_NanamiToken_Red == 10 && _NanamiToken_Blue == 10)
         {
             Debug.Log("Game failed: Nanami has all Tokens");
-            _LostScreen.SetActive(true);
+            _Screen_Loss.SetActive(true);
         }
         
     }
+
+
+
+
+
+//FINDING CALL FUNCTIONS
+
+    public void FindingCall_Dice()
+    {
+        for (int i = 0; i < A_Dice.Length; i++)
+        {
+            A_Dice = GameObject.FindGameObjectsWithTag("Dice");
+
+        }
+    }
+
+    public void FindingCall_Buttons()
+    {
+        B_Player_Even = GameObject.Find("B_Player_Even");
+        B_Player_Odd = GameObject.Find("B_Player_Odd");
+
+        B_Nanami_Even = GameObject.Find("B_Nanami_Even");
+        B_Nanami_Odd = GameObject.Find("B_Nanami_Odd");
+
+        B_NextRound = GameObject.Find("NanamisBet");
+
+    }
+
+    public void FindingCall_Txt()
+    {
+        //DiceSum
+        Txt_DiceSum = GameObject.Find("DiceSum").GetComponent<TMP_Text>();
+
+        //Token_Texts
+        Txt_PlayerToken_Red  = GameObject.Find("Player_Red#").GetComponent<TMP_Text>();
+        Txt_PlayerToken_Blue = GameObject.Find("Player_Blue#").GetComponent<TMP_Text>();
+        Txt_NanamiToken_Red  = GameObject.Find("Nanami_Red#").GetComponent<TMP_Text>();
+        Txt_NanamiToken_Blue = GameObject.Find("Nanami_Blue#").GetComponent<TMP_Text>();
+
+        //Bet Results
+        Txt_Bet_Nanami = GameObject.Find("Txt_Bet_Nanami").GetComponent<TMP_Text>();
+        Txt_Bet_Player = GameObject.Find("Txt_Bet_Player").GetComponent<TMP_Text>();
+
+    }
+
+    public void FindingCall_Other()
+    {
+        _Screen_Win = GameObject.Find("Screen_Win");
+        _Screen_Loss = GameObject.Find("Screen_Loss");
+
+    }
+
 }

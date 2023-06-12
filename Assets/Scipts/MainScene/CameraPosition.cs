@@ -5,32 +5,48 @@ using UnityEngine.UI;
 
 public class CameraPosition : MonoBehaviour
 {
+    //Scripts
     public MouseRay S_MouseRay;
 
 
     //Note: Later on change the public to grabbing them automatically at start
     [Header("Camera")]
     private Camera _MainCamera;
-    [Header("CameraMovementButtons")]
-    public GameObject _MovetoCooking;
-    public GameObject _MovetoGuest;
-    [Space]
+
+    //CameraMovement
+    private GameObject B_MovetoCooking;
+    private GameObject B_MovetoGuest;
+
+    //Buttons
+    private GameObject B_Serve;
+    private GameObject B_Recipe;
 
     
 
 
     //Position of the two Backgrounds for GUest and Cooking Scene, which are needed to move the 
     //camera down or up 
-    Vector3 GuestCamera = new Vector3(944, 538, -994);
-    Vector3 CookCamera = new Vector3(944, -544, -994);
+    Vector3 GuestCamera = new Vector3(0f, 7.14f, -10f);
+    Vector3 CookCamera = new Vector3(0f, -7.25f, -10f);
     
 
 
 
- //START
+//START
     void Start()
     {
         _MainCamera = Camera.main;
+
+        //Buttons
+        B_MovetoCooking = GameObject.Find("B_Cooking");
+        B_MovetoGuest = GameObject.Find("B_Guest");
+        B_Serve = GameObject.Find("B_Serve");
+        B_Recipe = GameObject.Find("B_Recipe");
+
+        //Other
+        B_Serve.SetActive(false);
+        B_Recipe.SetActive(false);
+        B_MovetoGuest.SetActive(false);
 
     }
 
@@ -48,7 +64,11 @@ public class CameraPosition : MonoBehaviour
     public void CookingCameraMove()
     {
         StartCoroutine(CookingCameraLogic());
-        _MovetoCooking.SetActive(false);
+        B_MovetoCooking.SetActive(false);
+        B_MovetoGuest.SetActive(true);
+
+        B_Serve.SetActive(true);
+        B_Recipe.SetActive(true);
     }
 
     public IEnumerator CookingCameraLogic()
@@ -76,7 +96,11 @@ public class CameraPosition : MonoBehaviour
     public void GuestCameraMove()
     {
         StartCoroutine(GuestCameraLogic());
-        _MovetoCooking.SetActive(true);
+        B_MovetoCooking.SetActive(true);
+        B_MovetoGuest.SetActive(false);
+
+        B_Serve.SetActive(false);
+        B_Recipe.SetActive(false);
     }
 
     public IEnumerator GuestCameraLogic()
@@ -102,7 +126,9 @@ public class CameraPosition : MonoBehaviour
 
 
 
+//FINDING CALLS
 
+    
 
 
 

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dice
+  - Text
+  - Cupboard_Door
   layers:
   - Default
   - TransparentFX
@@ -61,4 +64,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 659401367
+    locked: 0
+  - name: Cupboard_Doors
+    uniqueID: 1910766023
     locked: 0
