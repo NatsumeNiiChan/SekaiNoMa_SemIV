@@ -16,12 +16,12 @@ public class Dice : MonoBehaviour
 
     [Header("DiceRotation")]
     //Dice Rotations 
-    Quaternion Q_Dice_1 = Quaternion.Euler(90, 0, 0);
-    Quaternion Q_Dice_2 = Quaternion.Euler(0, 0, -90);
-    Quaternion Q_Dice_3 = Quaternion.Euler(180, 0, 0);
-    Quaternion Q_Dice_4 = Quaternion.Euler(0, 0, 0);
-    Quaternion Q_Dice_5 = Quaternion.Euler(0, 0, 90);
-    Quaternion Q_Dice_6 = Quaternion.Euler(-90, 0, 0);
+    Quaternion Q_Dice_1 = Quaternion.Euler(0, -270, 90);
+    Quaternion Q_Dice_2 = Quaternion.Euler(0, 0, 180);
+    Quaternion Q_Dice_3 = Quaternion.Euler(-90, -180, 0);
+    Quaternion Q_Dice_4 = Quaternion.Euler(90, 0, 0);
+    Quaternion Q_Dice_5 = Quaternion.Euler(0, 180, 0);
+    Quaternion Q_Dice_6 = Quaternion.Euler(0, 90, -90);
 
     [Header("Random_Number")]
     private int[] _DiceNumber = new int[3];
