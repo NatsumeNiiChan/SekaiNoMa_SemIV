@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CameraPosition : MonoBehaviour
 {
     //Scripts
+    [HideInInspector]
     public MouseRay S_MouseRay;
 
 
@@ -35,6 +36,9 @@ public class CameraPosition : MonoBehaviour
 //START
     void Start()
     {
+        //MouseRayScript
+        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+
         _MainCamera = Camera.main;
 
         //Buttons
