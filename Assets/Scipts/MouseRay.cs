@@ -16,6 +16,7 @@ public class MouseRay : MonoBehaviour
     
 
     //INGREDIENTS
+    [Header("+++Do not Edit+++")]
     public GameObject[] A_IngredientList       = new GameObject[12]; /*Keep visible to make sure their order is correct*/
     public GameObject[] A_ToolList             = new GameObject[7];
     private bool[] A_IngredientChosen          = new bool[12];
@@ -165,13 +166,16 @@ public class MouseRay : MonoBehaviour
                             if (hit.collider.gameObject == A_IngredientList[0]) /*Egg*/
                             {
                                 A_Ingredient_Animators[0].SetTrigger("Egg");
+                                A_IngredientSprite[0].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[0] = true;
                                 _IngredientCounter++;
+                                
 
                             }
                             if (hit.collider.gameObject == A_IngredientList[1]) /*Lotus*/
                             {
                                 A_Ingredient_Animators[1].SetTrigger("Lotus");
+                                A_IngredientSprite[1].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[1] = true;
                                 _IngredientCounter++;
 
@@ -187,6 +191,7 @@ public class MouseRay : MonoBehaviour
                             if (hit.collider.gameObject == A_IngredientList[3]) /*Menma*/
                             {
                                 A_Ingredient_Animators[3].SetTrigger("Menma");
+                                A_IngredientSprite[3].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[3] = true;
                                 _IngredientCounter++;
 
@@ -194,6 +199,7 @@ public class MouseRay : MonoBehaviour
                             if (hit.collider.gameObject == A_IngredientList[4]) /*Naruto*/
                             {
                                 A_Ingredient_Animators[4].SetTrigger("Naruto");
+                                A_IngredientSprite[4].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[4] = true;
                                 _IngredientCounter++;
 
@@ -201,6 +207,7 @@ public class MouseRay : MonoBehaviour
                             if (hit.collider.gameObject == A_IngredientList[5]) /*Nori*/
                             {
                                 A_Ingredient_Animators[5].SetTrigger("Nori");
+                                A_IngredientSprite[5].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[5] = true;
                                 _IngredientCounter++;
 
@@ -216,6 +223,7 @@ public class MouseRay : MonoBehaviour
                             if (hit.collider.gameObject == A_IngredientList[7]) /*PorkBelly*/
                             {
                                 A_Ingredient_Animators[7].SetTrigger("PorkBelly");
+                                A_IngredientSprite[7].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[7] = true;
                                 _IngredientCounter++;
 
@@ -247,6 +255,7 @@ public class MouseRay : MonoBehaviour
                             if (hit.collider.gameObject == A_IngredientList[11]) /*Wakame*/
                             {
                                 A_Ingredient_Animators[11].SetTrigger("Wakame");
+                                A_IngredientSprite[11].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[11] = true;
                                 _IngredientCounter++;
 
@@ -363,6 +372,8 @@ public class MouseRay : MonoBehaviour
 
     }
 
+
+//SMOL
     public void Serve_Kikaku()
     {
         if (_IngredientCounter == 9)
@@ -412,16 +423,27 @@ public class MouseRay : MonoBehaviour
 
     }
 
+//TEst
     public void KikakuTest()
     {
         _KikakuRamen = true;
+        _TonbaraRamen = false;
         Debug.Log(_KikakuRamen);
     }
     public void TonbaraTest()
     {
         _TonbaraRamen = true;
+        _KikakuRamen = false;
         Debug.Log(_TonbaraRamen);
     }
+
+//Animation Events
+
+    
+
+
+
+
 
 //Finding Calls and Vanilla Positions
 

@@ -59,13 +59,16 @@ TagManager:
   - name: Ingredients_In
     uniqueID: 787157455
     locked: 0
+  - name: Tools_In
+    uniqueID: 2049508615
+    locked: 0
   - name: Cupboard_Doors
     uniqueID: 1910766023
     locked: 0
   - name: Additives
     uniqueID: 1582261355
     locked: 0
-  - name: Tools
+  - name: Tools_out
     uniqueID: 1952205655
     locked: 0
   - name: Ingredients_Out
