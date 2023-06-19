@@ -7,6 +7,15 @@ public class MouseRay : MonoBehaviour
 {
     private Camera _MainCamera;
 
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    //Scripts
+    [HideInInspector] public Dialog S_Dialog;
+
+
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     //CUPBOARD
     private GameObject[] A_CupboardDoor = new GameObject[6];
     private bool[] A_CupboardDoorClosed = new bool[6];
@@ -14,9 +23,10 @@ public class MouseRay : MonoBehaviour
     //Animation
     private Animator[] A_CD_Animators   = new Animator[6];
     
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //INGREDIENTS
-    [Header("+++Do not Edit+++")]
+    [Header("+++DO NOT EDIT - ONLY LOOK +++")]
     public GameObject[] A_IngredientList       = new GameObject[12]; /*Keep visible to make sure their order is correct*/
     public GameObject[] A_ToolList             = new GameObject[7];
     private bool[] A_IngredientChosen          = new bool[12];
@@ -25,7 +35,6 @@ public class MouseRay : MonoBehaviour
     //Animations
     private Animator[] A_Ingredient_Animators  = new Animator[12];
     private Animator[] A_Tool_Animators         = new Animator[2];
-
 
     //RECIPE
     private int _IngredientCounter; /* Recipes have 10 ingredients */
@@ -39,9 +48,14 @@ public class MouseRay : MonoBehaviour
     private GameObject _KikakuUI;
     private GameObject _TonbaraUI;
 
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+    //TALKING
+    //Box that text is in and is clicked to do the talky 
 
-    //START
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//START
     void Start()
     {
         _MainCamera = Camera.main;
@@ -72,6 +86,10 @@ public class MouseRay : MonoBehaviour
     {
        
     }
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//FUNCTIONS
 
     public void ObjectDetectionbyMouse()
     {
@@ -157,6 +175,30 @@ public class MouseRay : MonoBehaviour
                     }
                 }
 
+                //TALKING
+                if (hit.collider.gameObject == S_Dialog._TextBox)
+                {
+                    Debug.Log($"{hit.collider.name}Detected", hit.collider.gameObject);
+
+                    
+                    /*if (_DialogCounter == 1)
+                    {
+                        //S_Dialog.
+
+                    }
+                    if (_DialogCounter == 2)
+                    {
+                        //S_Dialog.
+
+                    }*/
+
+
+
+
+                }
+
+
+                //COOKING
                 if (_IngredientCounter < 10)
                 {
                     for (int i = 0; i < A_IngredientList.Length; i++)
@@ -178,6 +220,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientSprite[1].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[1] = true;
                                 _IngredientCounter++;
+                                
 
                             }
                             if (hit.collider.gameObject == A_IngredientList[2]) /*Meat*/
@@ -186,6 +229,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientSprite[2].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[2] = true;
                                 _IngredientCounter++;
+                                Debug.Log("Porkanim");
 
                             }
                             if (hit.collider.gameObject == A_IngredientList[3]) /*Menma*/
@@ -423,6 +467,8 @@ public class MouseRay : MonoBehaviour
 
     }
 
+   
+
 //TEst
     public void KikakuTest()
     {
@@ -437,15 +483,15 @@ public class MouseRay : MonoBehaviour
         Debug.Log(_TonbaraRamen);
     }
 
-//Animation Events
-
-    
+    //Animation Events
 
 
 
 
 
-//Finding Calls and Vanilla Positions
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    //Finding Calls and Vanilla Positions
 
     public void FindingCall_CD_Animators()
     {
