@@ -1849,8 +1849,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u4E16\u754C\u306E\u771F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e2ff6d1ec2295484bb4edbf18f1aa54b, type: 2}
-  m_sharedMaterial: {fileID: -5887485158335021364, guid: e2ff6d1ec2295484bb4edbf18f1aa54b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 975c97b6b113e784ebd50360c3b0e1d7, type: 2}
+  m_sharedMaterial: {fileID: -5376036265995588980, guid: 975c97b6b113e784ebd50360c3b0e1d7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
