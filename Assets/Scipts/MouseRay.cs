@@ -37,10 +37,10 @@ public class MouseRay : MonoBehaviour
     private Animator[] A_Tool_Animators         = new Animator[2];
 
     //RECIPE
-    private int _IngredientCounter; /* Recipes have 10 ingredients */
+    public int _IngredientCounter; /* Recipes have 10 ingredients */
     //Which ramen?
-    private bool _KikakuRamen;
-    private bool _TonbaraRamen;
+    [HideInInspector] public bool _KikakuRamen;
+    [HideInInspector] public bool _TonbaraRamen;
     private bool _KikakuCorrect;
     private bool _TonbaraCorrect;
     //Recipe UI
@@ -178,7 +178,7 @@ public class MouseRay : MonoBehaviour
                 }
 
                 //COOKING
-                if (_IngredientCounter < 10)
+                if (_IngredientCounter < 9)
                 {
                     for (int i = 0; i < A_IngredientList.Length; i++)
                     {
@@ -405,14 +405,17 @@ public class MouseRay : MonoBehaviour
 //SMOL
     public void Serve_Kikaku()
     {
-        if (_IngredientCounter == 9)
+        if (_IngredientCounter == 9 && _KikakuRamen == true)
         {
+            Debug.Log(_KikakuRamen);
             if (A_ToolChosen[1] && A_ToolChosen[0] && A_IngredientChosen[0] && A_IngredientChosen[5] && A_IngredientChosen[9] && A_IngredientChosen[1] && A_IngredientChosen[10] && A_IngredientChosen[2] && A_IngredientChosen[4])
             {
                 _KikakuCorrect = true;
                 _IngredientCounter = 0;
                 Debug.Log("Kikaku Correct");
                 S_Dialog._DialogCounter = 1;
+
+                S_Dialog._Index = 0;
             }
             else 
             {
@@ -420,6 +423,9 @@ public class MouseRay : MonoBehaviour
                 _IngredientCounter = 0;
                 Debug.Log("Kikaku Wrong");
                 S_Dialog._DialogCounter = 2;
+
+                S_Dialog._Index = 0;
+
             }
 
         }
@@ -431,14 +437,18 @@ public class MouseRay : MonoBehaviour
 
     public void Serve_Tonbara()
     {
-        if (_IngredientCounter == 9)
+        if (_IngredientCounter == 9 && _TonbaraRamen == true)
         {
+            Debug.Log(_TonbaraRamen);
             if (A_ToolChosen[2] && A_ToolChosen[0] && A_IngredientChosen[0] && A_IngredientChosen[5] && A_IngredientChosen[9] && A_IngredientChosen[1] && A_IngredientChosen[10] && A_IngredientChosen[7] && A_IngredientChosen[4])
             {
                 _TonbaraCorrect = true;
                 _IngredientCounter = 0;
                 S_Dialog._DialogCounter = 1;
                 Debug.Log("Tonbara Correct");
+
+                S_Dialog._Index = 0;
+
             }
             else 
             {
@@ -446,6 +456,9 @@ public class MouseRay : MonoBehaviour
                 _IngredientCounter = 0;
                 Debug.Log("Tonbara Wrong");
                 S_Dialog._DialogCounter = 2;
+
+                S_Dialog._Index = 0;
+
             }
 
         }
@@ -456,6 +469,7 @@ public class MouseRay : MonoBehaviour
 
     public void RecipeUI()
     {
+        Debug.Log("Recipe on");
         if (_KikakuRamen == true)
         {
             _RecipeOvergroup.SetActive(true);
@@ -483,7 +497,7 @@ public class MouseRay : MonoBehaviour
     }
 
 //TEst
-    public void KikakuTest()
+    /*public void KikakuTest()
     {
         _KikakuRamen = true;
         _TonbaraRamen = false;
@@ -494,7 +508,7 @@ public class MouseRay : MonoBehaviour
         _TonbaraRamen = true;
         _KikakuRamen = false;
         Debug.Log(_TonbaraRamen);
-    }
+    }*/
 
     //Animation Events
 

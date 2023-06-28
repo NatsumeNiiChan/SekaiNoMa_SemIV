@@ -8,6 +8,7 @@ public class Dialog : MonoBehaviour
     //Scripts
     //[HideInInspector] public MouseRay S_MouseRay;
     [HideInInspector] public Dialog_Text S_Dialog_Text;
+    [HideInInspector] public MouseRay S_MouseRay;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -21,7 +22,8 @@ public class Dialog : MonoBehaviour
     [HideInInspector] public int _DialogCounter = 0;
     [HideInInspector] public int _CharacterCounter = 0;
     //Counter for Inside of Single Array
-    private int _Index = 0;
+    //[HideInInspector]
+    public int _Index = 0;
 
     
 
@@ -33,6 +35,7 @@ public class Dialog : MonoBehaviour
         //Get Scripts
         //S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
         S_Dialog_Text = GameObject.Find("DialogManager").GetComponent<Dialog_Text>();
+        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
 
 
         //Get Stuff
@@ -48,7 +51,7 @@ public class Dialog : MonoBehaviour
         _Index = 0;
         Txt_Dialog.text = string.Empty;
         
-
+        StartDialog();
     }
 
 //UPDATE
@@ -78,18 +81,30 @@ public class Dialog : MonoBehaviour
         {
             if (_CharacterCounter == 0) /* Takeru */
             {
+                S_MouseRay._KikakuRamen = false;
+                S_MouseRay._TonbaraRamen = true;
+                _DialogCounter = 0;
                 StartCoroutine(TypeLine_Takeru());
 
             }
 
             if (_CharacterCounter == 1) /* Mamoru */
             {
+                S_MouseRay._KikakuRamen = true;
+                S_MouseRay._TonbaraRamen = false;
+
+                _DialogCounter = 0;
+
                 StartCoroutine(TypeLine_Mamoru());
 
             }
 
             if (_CharacterCounter == 2) /* Nanami */
             {
+                S_MouseRay._KikakuRamen = false;
+                S_MouseRay._TonbaraRamen = true;
+                _DialogCounter = 0;
+
                 StartCoroutine(TypeLine_Nanami());
 
             }
@@ -110,12 +125,10 @@ public class Dialog : MonoBehaviour
         {
             if (Txt_Dialog.text == S_Dialog_Text.A_Dialog_Takeru_General[_Index])
             {
-                Debug.Log("DialogFunction");
                 NextLine_Takeru();
             }
             else
             {
-                Debug.Log("Endddd_DialogFunction");
                 StopAllCoroutines();
                 Txt_Dialog.text = S_Dialog_Text.A_Dialog_Takeru_General[_Index];
             }
@@ -137,7 +150,7 @@ public class Dialog : MonoBehaviour
         }
 
         if (_DialogCounter == 2) /* Wrong */
-        {
+        {           
             if (Txt_Dialog.text == S_Dialog_Text.A_Dialog_Takeru_Wrong[_Index])
             {
                 NextLine_Takeru();
@@ -147,6 +160,7 @@ public class Dialog : MonoBehaviour
                 StopAllCoroutines();
                 Txt_Dialog.text = S_Dialog_Text.A_Dialog_Takeru_Wrong[_Index];
             }
+           
 
             //When last text reached, set chara counter up
         }
@@ -158,7 +172,7 @@ public class Dialog : MonoBehaviour
         {          
             foreach (char c in S_Dialog_Text.A_Dialog_Takeru_General[_Index].ToCharArray())
             {
-                Debug.Log("TypeLineTakeru");
+                //Debug.Log("TypeLineTakeru");
                 Txt_Dialog.text += c;
                 yield return new WaitForSeconds(_TextSpeed);
             }
@@ -189,15 +203,17 @@ public class Dialog : MonoBehaviour
         {
             if (_Index < S_Dialog_Text.A_Dialog_Takeru_General.Length - 1)
             {
-                Debug.Log("NextLine");
+                //Debug.Log("NextLine");
                 _Index++;
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Takeru());
             }
             else if (_Index == S_Dialog_Text.A_Dialog_Takeru_General.Length - 1)
             {
-                Debug.Log("Dialog End");
-                _Index = 0;
+                Debug.Log(_Index);
+
+                Debug.Log("Dialog-TGeneral End");
+
             }
         }
 
@@ -211,9 +227,11 @@ public class Dialog : MonoBehaviour
             }
             else if (_Index == S_Dialog_Text.A_Dialog_Takeru_Correct.Length -1)
             {
-                Debug.Log("Dialog End");
-                _Index = 0;
+                Debug.Log(_Index);
+                Debug.Log("Dialog-TCorrect End");
                 _CharacterCounter = 1;
+                _Index = 0;
+                StartDialog();
 
             }
         }
@@ -228,9 +246,11 @@ public class Dialog : MonoBehaviour
             }
             else if (_Index == S_Dialog_Text.A_Dialog_Takeru_Wrong.Length -1)
             {
-                Debug.Log("Dialog End");
-                _Index = 0;
+                Debug.Log("Dialog-TWrong End");
+                Debug.Log(_Index);
                 _CharacterCounter = 1;
+                _Index = 0;
+                StartDialog();
 
             }
         }
@@ -340,9 +360,9 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Correct.Length -1)
             {
                 Debug.Log("Dialog End");
-                _Index = 0;
                 _CharacterCounter = 2;
-
+                _Index = 0;
+                StartDialog();
             }
         }
 
@@ -357,9 +377,9 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Wrong.Length - 1)
             {
                 Debug.Log("Dialog End");
-                _Index = 0;
                 _CharacterCounter = 2;
-
+                _Index = 0;
+                StartDialog();
             }
         }
 
@@ -469,7 +489,8 @@ public class Dialog : MonoBehaviour
             {
                 Debug.Log("Dialog End");
                 _Index = 0;
-
+                // DO THE END OF GAME THINGS?
+                //StartDialog();
             }
         }
 
@@ -485,6 +506,7 @@ public class Dialog : MonoBehaviour
             {
                 Debug.Log("Dialog End");
                 _Index = 0;
+                // DO THE END OF GAME THINGS?
 
             }
         }

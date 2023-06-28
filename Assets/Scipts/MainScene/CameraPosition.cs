@@ -85,7 +85,7 @@ public class CameraPosition : MonoBehaviour
         {
             timeSinceStarted += Time.deltaTime;
             _MainCamera.transform.position = Vector3.Lerp(GuestCamera, CookCamera, timeSinceStarted);
-            Debug.Log("CamMoved");
+            //Debug.Log("CamMoved");
 
             // If the object has arrived, stop the coroutine
             if (_MainCamera.transform.position == CookCamera)
@@ -119,7 +119,7 @@ public class CameraPosition : MonoBehaviour
         {
             timeSinceStarted += Time.deltaTime;
             _MainCamera.transform.position = Vector3.Lerp(CookCamera, GuestCamera, timeSinceStarted);
-            Debug.Log("CamMoved");
+            //Debug.Log("CamMoved");
 
             // If the object has arrived, stop the coroutine
             if (_MainCamera.transform.position == GuestCamera)

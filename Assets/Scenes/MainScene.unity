@@ -2348,7 +2348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &334344705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6105,7 +6105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1021574002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6753,6 +6753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   S_Dialog_Text: {fileID: 0}
+  S_MouseRay: {fileID: 0}
   _TextBox: {fileID: 0}
   Txt_Dialog: {fileID: 0}
   _TextSpeed: 0.04
@@ -7213,6 +7214,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _IngredientCounter: 0
+  _KikakuRamen: 0
+  _TonbaraRamen: 0
 --- !u!4 &1239640640
 Transform:
   m_ObjectHideFlags: 0
@@ -8971,7 +8975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1430418352
 RectTransform:
   m_ObjectHideFlags: 0
