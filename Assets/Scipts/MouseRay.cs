@@ -59,6 +59,7 @@ public class MouseRay : MonoBehaviour
     void Start()
     {
         _MainCamera = Camera.main;
+        S_Dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
 
         //Get Cupboard Doors
         A_CupboardDoor = GameObject.FindGameObjectsWithTag("Cupboard_Door");

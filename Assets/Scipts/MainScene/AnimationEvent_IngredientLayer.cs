@@ -31,7 +31,8 @@ public class AnimationEvent_IngredientLayer : MonoBehaviour
         for (int i = 0; i < S_MouseRay.A_IngredientList.Length; i++)
         {
             S_MouseRay.A_IngredientSprite[i].sortingLayerName = "Ingredients_In";
-
+            Debug.Log(
+            S_MouseRay.A_IngredientSprite[i]);
         }
 
     }

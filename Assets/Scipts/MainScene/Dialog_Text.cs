@@ -19,17 +19,26 @@ public class Dialog_Text : MonoBehaviour
 
 
     //Dialogue Texts
-    [HideInInspector] public string[] A_Dialog_Takeru_General;
-    [HideInInspector] public string[] A_Dialog_Takeru_Correct = new string[11];
-    [HideInInspector] public string[] A_Dialog_Takeru_Wrong;
+    [HideInInspector] 
+    public string[] A_Dialog_Takeru_General = new string[14];
+    [HideInInspector]
+    public string[] A_Dialog_Takeru_Correct = new string[11];
+    [HideInInspector] 
+    public string[] A_Dialog_Takeru_Wrong = new string[5];
 
-    [HideInInspector] public string[] A_Dialog_Mamoru_General;
-    [HideInInspector] public string[] A_Dialog_Mamoru_Correct;
-    [HideInInspector] public string[] A_Dialog_Mamoru_Wrong;
+    [HideInInspector]
+    public string[] A_Dialog_Mamoru_General = new string[14];
+    [HideInInspector]
+    public string[] A_Dialog_Mamoru_Correct = new string[16];
+    [HideInInspector]
+    public string[] A_Dialog_Mamoru_Wrong = new string[8];
 
-    [HideInInspector] public string[] A_Dialog_Nanami_General;
-    [HideInInspector] public string[] A_Dialog_Nanami_Correct;
-    [HideInInspector] public string[] A_Dialog_Nanami_Wrong;
+    [HideInInspector] 
+    public string[] A_Dialog_Nanami_General = new string[13];
+    [HideInInspector]
+    public string[] A_Dialog_Nanami_Correct = new string[7];
+    [HideInInspector]
+    public string[] A_Dialog_Nanami_Wrong = new string[2];
 
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    [HideInInspector] public SceneManagement S_SceneManagement;
+    //[HideInInspector] 
+    public SceneManagement S_SceneManagement;
 
     //Buttons
-    private GameObject B_StartGame;
-    private GameObject B_EndGame;
-    private GameObject B_LoadGame;
-    private GameObject B_Settings;
-    private GameObject B_Diary;
+    //private GameObject B_StartGame;
+    //private GameObject B_EndGame;
+    //private GameObject B_LoadGame;
+    //private GameObject B_Settings;
+    //private GameObject B_Diary;
 
 
 //START
@@ -20,7 +21,7 @@ public class GameMenu : MonoBehaviour
     {
         S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
 
-        FindingCall_Buttons();
+        //FindingCall_Buttons();
 
         S_SceneManagement._SceneIndex = 0 ;
 
@@ -63,7 +64,7 @@ public class GameMenu : MonoBehaviour
 
 //FINDING CALLS
 
-    public void FindingCall_Buttons()
+    /*public void FindingCall_Buttons()
     {
         B_StartGame = GameObject.Find("Start_Game");
         B_LoadGame = GameObject.Find("Load_Game");
@@ -71,7 +72,7 @@ public class GameMenu : MonoBehaviour
         B_Settings = GameObject.Find("Settings");
         B_EndGame = GameObject.Find("Quit_Game");
 
-    }
+    }*/
 
 
 
