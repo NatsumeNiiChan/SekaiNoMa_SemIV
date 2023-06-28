@@ -6,13 +6,13 @@ using TMPro;
 public class Dialog : MonoBehaviour
 {
     //Scripts
-    [HideInInspector] public MouseRay S_MouseRay;
+    //[HideInInspector] public MouseRay S_MouseRay;
     [HideInInspector] public Dialog_Text S_Dialog_Text;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    public GameObject _TextBox;
-    public TextMeshProUGUI Txt_Dialog;
+    [HideInInspector] public GameObject _TextBox;
+    [HideInInspector] public TextMeshProUGUI Txt_Dialog;
     public float _TextSpeed;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -23,7 +23,7 @@ public class Dialog : MonoBehaviour
     //Counter for Inside of Single Array
     private int _Index = 0;
 
-
+    
 
 
 
@@ -31,7 +31,7 @@ public class Dialog : MonoBehaviour
     void Start()
     {
         //Get Scripts
-        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+        //S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
         S_Dialog_Text = GameObject.Find("DialogManager").GetComponent<Dialog_Text>();
 
 
@@ -110,14 +110,17 @@ public class Dialog : MonoBehaviour
         {
             if (Txt_Dialog.text == S_Dialog_Text.A_Dialog_Takeru_General[_Index])
             {
+                Debug.Log("DialogFunction");
                 NextLine_Takeru();
             }
             else
             {
-                Debug.Log("Endddd");
+                Debug.Log("Endddd_DialogFunction");
                 StopAllCoroutines();
                 Txt_Dialog.text = S_Dialog_Text.A_Dialog_Takeru_General[_Index];
             }
+
+
         }
 
         if (_DialogCounter == 1) /* Correct */
@@ -144,6 +147,8 @@ public class Dialog : MonoBehaviour
                 StopAllCoroutines();
                 Txt_Dialog.text = S_Dialog_Text.A_Dialog_Takeru_Wrong[_Index];
             }
+
+            //When last text reached, set chara counter up
         }
 
     }
@@ -153,7 +158,7 @@ public class Dialog : MonoBehaviour
         {          
             foreach (char c in S_Dialog_Text.A_Dialog_Takeru_General[_Index].ToCharArray())
             {
-                Debug.Log("test");
+                Debug.Log("TypeLineTakeru");
                 Txt_Dialog.text += c;
                 yield return new WaitForSeconds(_TextSpeed);
             }
@@ -184,13 +189,15 @@ public class Dialog : MonoBehaviour
         {
             if (_Index < S_Dialog_Text.A_Dialog_Takeru_General.Length - 1)
             {
+                Debug.Log("NextLine");
                 _Index++;
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Takeru());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Takeru_General.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Takeru_General.Length - 1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
             }
         }
 
@@ -202,9 +209,12 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Takeru());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Takeru_Correct.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Takeru_Correct.Length -1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+                _CharacterCounter = 1;
+
             }
         }
 
@@ -216,9 +226,12 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Takeru());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Takeru_Wrong.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Takeru_Wrong.Length -1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+                _CharacterCounter = 1;
+
             }
         }
 
@@ -308,9 +321,11 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Mamoru());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_General.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_General.Length -1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+
             }
         }
 
@@ -322,9 +337,12 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Mamoru());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Correct.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Correct.Length -1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+                _CharacterCounter = 2;
+
             }
         }
 
@@ -336,9 +354,12 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Mamoru());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Wrong.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Wrong.Length - 1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+                _CharacterCounter = 2;
+
             }
         }
 
@@ -428,9 +449,11 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Nanami());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Nanami_General.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Nanami_General.Length - 1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+
             }
         }
 
@@ -442,9 +465,11 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Nanami());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Nanami_Correct.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Nanami_Correct.Length - 1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+
             }
         }
 
@@ -456,9 +481,11 @@ public class Dialog : MonoBehaviour
                 Txt_Dialog.text = string.Empty;
                 StartCoroutine(TypeLine_Nanami());
             }
-            else if (_Index == S_Dialog_Text.A_Dialog_Nanami_Wrong.Length)
+            else if (_Index == S_Dialog_Text.A_Dialog_Nanami_Wrong.Length - 1)
             {
                 Debug.Log("Dialog End");
+                _Index = 0;
+
             }
         }
 

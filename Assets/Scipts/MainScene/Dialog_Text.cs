@@ -6,8 +6,8 @@ using System;
 public class Dialog_Text : MonoBehaviour
 {
     //Scripts
-    [HideInInspector]
-    public MouseRay S_MouseRay;
+    //[HideInInspector]
+    //public MouseRay S_MouseRay;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -19,8 +19,8 @@ public class Dialog_Text : MonoBehaviour
 
 
     //Dialogue Texts
-    [HideInInspector] public string[] A_Dialog_Takeru_General = new string[14];
-    [HideInInspector] public string[] A_Dialog_Takeru_Correct;
+    [HideInInspector] public string[] A_Dialog_Takeru_General;
+    [HideInInspector] public string[] A_Dialog_Takeru_Correct = new string[11];
     [HideInInspector] public string[] A_Dialog_Takeru_Wrong;
 
     [HideInInspector] public string[] A_Dialog_Mamoru_General;
@@ -38,7 +38,7 @@ public class Dialog_Text : MonoBehaviour
     //START
     void Start()
     {
-        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+        //S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
         //Dialogue_TakeruGeneral();
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -47,6 +47,13 @@ public class Dialog_Text : MonoBehaviour
         Dialog_TakeruCorrect();
         Dialog_TakeruWrong();
 
+        Dialog_MamoruGeneral();
+        Dialog_MamoruCorrect();
+        Dialog_MamoruWrong();
+
+        Dialog_NanamiGeneral();
+        Dialog_NanamiCorrect();
+        Dialog_NanamiWrong();
 
 
 
@@ -56,6 +63,9 @@ public class Dialog_Text : MonoBehaviour
     void Update()
     {
 
+        //A_Dialog_Mamoru_Correct.Add("»Hier, bitte sehr.« ");
+
+
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -63,32 +73,13 @@ public class Dialog_Text : MonoBehaviour
 
     //FUNCTIONS
 
-    /*public void TakeruDialogs()
-    {
-        D_DialogsTakeru[] A_ArchiveDialogsTakeru = new D_DialogsTakeru[3];
-
-        A_ArchiveDialogsTakeru[0] = Dialog_TakeruGeneral;
-        A_ArchiveDialogsTakeru[1] = Dialog_TakeruCorrect;
-        A_ArchiveDialogsTakeru[2] = Dialog_TakeruWrong;
-
-        for (int i = 0; i < 3; i++)
-        {
-            A_ArchiveDialogsTakeru[i]();
-            _DialogCounterTakeru++;
-        }
-    }*/
-
-
-
-
-
-
-
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //Takeru
 
     public void Dialog_TakeruGeneral() /* Dialogue || 1 || */
     {
+        Debug.Log(A_Dialog_Takeru_General.Length);
+
         //Takeru enters Restaurant
         A_Dialog_Takeru_General[0] = "»Hey!« ";
         A_Dialog_Takeru_General[1] = "»*Legt Regenschirm ab*« ";
@@ -101,7 +92,7 @@ public class Dialog_Text : MonoBehaviour
         A_Dialog_Takeru_General[8] = "»Red nicht so einen Unsinn! Nächstes Jahr nimmst du an dem Wettbewerb teil.« ";
         A_Dialog_Takeru_General[9] = "»Naja… Mal sehen.« ";
         A_Dialog_Takeru_General[10] = "»Mach nicht so ein Gesicht. Sag, was ich dir heute machen?« ";
-        A_Dialog_Takeru_General[11] = "»Einmal -Rezeptname-. Und bitte zum Mitnehmen.« ";
+        A_Dialog_Takeru_General[11] = "»Einmal Tonbara. Und bitte zum Mitnehmen.« ";
         A_Dialog_Takeru_General[12] = "»Gerne.« ";
         A_Dialog_Takeru_General[13] = "*Essen machen* ";
 
@@ -159,7 +150,7 @@ public class Dialog_Text : MonoBehaviour
         A_Dialog_Mamoru_General[9] = "»Ja, und ich habe versucht, mit ihr zu reden. Sie hat gemeint, sie habe vor etwas Angst, aber hat nicht gesagt wovor. Kannst du es für mich herausfinden? Als Baku kannst du doch die Sorgen der Menschen sehen. Geht das auch mit Y?rei?« ";
         A_Dialog_Mamoru_General[10] = "»Hm… Weiß nicht. Probieren kann ich es aber.« ";
         A_Dialog_Mamoru_General[11] = "»Oh danke! Sag, welche Ramen willst du? Dann kann ich schonmal anfangen.« ";
-        A_Dialog_Mamoru_General[12] = "»Ach, -Rezeptname- bitte.« ";
+        A_Dialog_Mamoru_General[12] = "»Ach, Kikaku bitte.« ";
         A_Dialog_Mamoru_General[13] = "»Klar doch.« ";
         A_Dialog_Mamoru_General[13] = "*Essen machen* ";
 
@@ -215,7 +206,7 @@ public class Dialog_Text : MonoBehaviour
         A_Dialog_Nanami_General[6] = "*Stille* ";
         A_Dialog_Nanami_General[7] = "»Geht aufs Haus. Komm, worauf hast du Lust?« ";
         A_Dialog_Nanami_General[8] = "»Was ist denn lecker?« ";
-        A_Dialog_Nanami_General[9] = "»Hm… Also mein Favorit ist -Rezeptname-, wobei das ein bisschen eigen ist. Vielleicht willst du lieber den Klassiker, die -Rezeptname-.« ";
+        A_Dialog_Nanami_General[9] = "»Hm… Also mein Favorit ist Tonbara, wobei das ein bisschen eigen ist. Vielleicht willst du lieber den Klassiker, die -Rezeptname-.« ";
         A_Dialog_Nanami_General[10] = "»Das, was du magst.« ";
         A_Dialog_Nanami_General[11] = "»Okay, kommt sofort.« ";
         A_Dialog_Nanami_General[12] = "*Essen machen*  ";

@@ -84,7 +84,8 @@ public class MouseRay : MonoBehaviour
 //UPDATE
     void Update()
     {
-       
+        ObjectDetectionbyMouse();
+        CloseUI();
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -174,29 +175,6 @@ public class MouseRay : MonoBehaviour
 
                     }
                 }
-
-                //TALKING
-                if (hit.collider.gameObject == S_Dialog._TextBox)
-                {
-                    Debug.Log($"{hit.collider.name}Detected", hit.collider.gameObject);
-
-                    
-                    /*if (_DialogCounter == 1)
-                    {
-                        //S_Dialog.
-
-                    }
-                    if (_DialogCounter == 2)
-                    {
-                        //S_Dialog.
-
-                    }*/
-
-
-
-
-                }
-
 
                 //COOKING
                 if (_IngredientCounter < 10)
@@ -396,24 +374,30 @@ public class MouseRay : MonoBehaviour
 
                 }
 
+                /*TALKING
+                if (hit.collider.gameObject == S_Dialog._TextBox)
+                {
+                    Debug.Log($"{hit.collider.name}Detected", hit.collider.gameObject);
 
+                    
+                    /*if (_DialogCounter == 1)
+                    {
+                        //S_Dialog.
+
+                    }
+                    if (_DialogCounter == 2)
+                    {
+                        //S_Dialog.
+
+                    }
+
+
+
+
+                }*/
 
             }
-            //Check for Door Hit and then move them 
-
-
-
-
-
-
-            //if ingredient, beweg in die Mitte
-
-
-
-
         }
-
-
     }
 
 
@@ -425,10 +409,18 @@ public class MouseRay : MonoBehaviour
             if (A_ToolChosen[1] && A_ToolChosen[0] && A_IngredientChosen[0] && A_IngredientChosen[5] && A_IngredientChosen[9] && A_IngredientChosen[1] && A_IngredientChosen[10] && A_IngredientChosen[2] && A_IngredientChosen[4])
             {
                 _KikakuCorrect = true;
+                _IngredientCounter = 0;
                 Debug.Log("Kikaku Correct");
-
+                S_Dialog._DialogCounter = 1;
             }
-            else Debug.Log("Kikaku Wrong");
+            else 
+            {
+                _KikakuCorrect = false;
+                _IngredientCounter = 0;
+                Debug.Log("Kikaku Wrong");
+                S_Dialog._DialogCounter = 2;
+            }
+
         }
         //Kikaku:
         //Egg, Nori, SojaBean, Lotus, Scallions, Meat, Naruto
@@ -443,9 +435,17 @@ public class MouseRay : MonoBehaviour
             if (A_ToolChosen[2] && A_ToolChosen[0] && A_IngredientChosen[0] && A_IngredientChosen[5] && A_IngredientChosen[9] && A_IngredientChosen[1] && A_IngredientChosen[10] && A_IngredientChosen[7] && A_IngredientChosen[4])
             {
                 _TonbaraCorrect = true;
+                _IngredientCounter = 0;
+                S_Dialog._DialogCounter = 1;
                 Debug.Log("Tonbara Correct");
             }
-            else Debug.Log("Tonbara Wrong");
+            else 
+            {
+                _TonbaraCorrect = false;
+                _IngredientCounter = 0;
+                Debug.Log("Tonbara Wrong");
+                S_Dialog._DialogCounter = 2;
+            }
 
         }
         //Tonbara:
@@ -457,17 +457,29 @@ public class MouseRay : MonoBehaviour
     {
         if (_KikakuRamen == true)
         {
+            _RecipeOvergroup.SetActive(true);
             _KikakuUI.SetActive(true);
+
 
         }
         if (_TonbaraRamen == true)
         {
+            _RecipeOvergroup.SetActive(true);
             _TonbaraUI.SetActive(true);
         }
 
     }
 
-   
+    public void CloseUI()
+    {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            _RecipeOvergroup.SetActive(false);
+
+        }
+
+
+    }
 
 //TEst
     public void KikakuTest()
@@ -539,9 +551,10 @@ public class MouseRay : MonoBehaviour
 
     public void FindingCall_RecipesUI()
     {
-        _RecipeOvergroup = GameObject.Find("Recipes");
+        //_RecipeOvergroup = GameObject.Find("Recipes");
         _KikakuUI = GameObject.Find("Recipe_Kikaku");
         _TonbaraUI = GameObject.Find("Recipe_Tonbara");
+        _RecipeOvergroup = GameObject.Find("Recipes");
         _KikakuUI.SetActive(false);
         _TonbaraUI.SetActive(false);
         _RecipeOvergroup.SetActive(false);

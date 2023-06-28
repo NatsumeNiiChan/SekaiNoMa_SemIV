@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class GameMenu : MonoBehaviour
 {
+    [HideInInspector] public SceneManagement S_SceneManagement;
+
     //Buttons
     private GameObject B_StartGame;
     private GameObject B_EndGame;
@@ -16,14 +18,16 @@ public class MainMenu : MonoBehaviour
 //START
     void Start()
     {
+        S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
+
         FindingCall_Buttons();
 
-
+        S_SceneManagement._SceneIndex = 0 ;
 
 
     }
 
-//UPDATE
+    //UPDATE
     void Update()
     {
         

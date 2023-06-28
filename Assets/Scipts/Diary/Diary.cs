@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Diary : MonoBehaviour
 {
     //Scripts
+    [HideInInspector] public SceneManagement S_SceneManagement;
 
     //DiaryPages
     public GameObject[] A_DiaryPages = new GameObject[17];
@@ -16,8 +18,12 @@ public class Diary : MonoBehaviour
 //START
     void Start()
     {
+        S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
+
         FindingCall_DiaryPages();
         Disable_DiaryPages();
+
+        Debug.Log(S_SceneManagement._SceneIndex);
     }
 
 //UPDATE
@@ -52,6 +58,30 @@ public class Diary : MonoBehaviour
 
         }
         
+    }
+
+
+
+    public void PreviousSceneBack()
+    {
+        if (SceneManager.GetActiveScene().buildIndex - S_SceneManagement._SceneIndex == 1)
+        {
+            //DiaryScene == 2
+            //if activesceneindex(Diary == 2) - _SceneIndex == 1 -> previousScene: mainscene -> 2 - 1 == 1
+            //if activesceneindex(Diary == 2) - _SceneIndex == 2 -> previousScene: gamemnu -> 2 - 0 == 2           
+            Debug.Log("LoadGame");            
+            SceneManager.LoadScene("MainScene");
+
+
+        }
+        else if (SceneManager.GetActiveScene().buildIndex - S_SceneManagement._SceneIndex == 2)
+        {
+            
+            Debug.Log("LoadMenu"); 
+
+            SceneManager.LoadScene("GameMenu");
+
+        }
     }
 
     //FINDING CALLS

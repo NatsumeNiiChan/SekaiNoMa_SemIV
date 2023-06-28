@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
+    [HideInInspector] public int _SceneIndex;
 
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
-
-//START
+    //START
     void Start()
     {
-        
+
     }
 
 //UPDATE
@@ -29,6 +33,7 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
 
 
 

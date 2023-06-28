@@ -7,7 +7,7 @@ public class CameraPosition : MonoBehaviour
 {
     //Scripts
     [HideInInspector]
-    public MouseRay S_MouseRay;
+    public Dialog S_Dialog;
 
 
     //Note: Later on change the public to grabbing them automatically at start
@@ -36,8 +36,8 @@ public class CameraPosition : MonoBehaviour
 //START
     void Start()
     {
-        //MouseRayScript
-        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+        //DialogScript
+        S_Dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
 
         _MainCamera = Camera.main;
 
@@ -57,7 +57,7 @@ public class CameraPosition : MonoBehaviour
 //UPDATE
     void Update()
     {
-        S_MouseRay.ObjectDetectionbyMouse();
+       
 
 
     }
@@ -71,8 +71,11 @@ public class CameraPosition : MonoBehaviour
         B_MovetoCooking.SetActive(false);
         B_MovetoGuest.SetActive(true);
 
+
         B_Serve.SetActive(true);
         B_Recipe.SetActive(true);
+
+        S_Dialog._TextBox.SetActive(false);
     }
 
     public IEnumerator CookingCameraLogic()
@@ -105,6 +108,8 @@ public class CameraPosition : MonoBehaviour
 
         B_Serve.SetActive(false);
         B_Recipe.SetActive(false);
+        S_Dialog._TextBox.SetActive(true);
+
     }
 
     public IEnumerator GuestCameraLogic()
