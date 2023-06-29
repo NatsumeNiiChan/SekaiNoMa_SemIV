@@ -7,11 +7,15 @@ public class VideoEnd : MonoBehaviour
 {
     private VideoPlayer videoPlayer;
     private GameObject introScreen;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         videoPlayer = GetComponent<VideoPlayer>();
         introScreen = GameObject.Find("Intro");
+        audioSource = FindObjectOfType<AudioSource>();
+
+        audioSource.mute = true;
     }
 
     private void Update()
@@ -19,6 +23,7 @@ public class VideoEnd : MonoBehaviour
         if (videoPlayer.isPlaying == false)
         {
             introScreen.SetActive(false);
+            audioSource.mute = false;
         }
     }
 }
