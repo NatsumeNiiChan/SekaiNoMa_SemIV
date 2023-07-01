@@ -7,10 +7,10 @@ public class SceneManagement : MonoBehaviour
 {
     [HideInInspector] public int _SceneIndex;
 
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        
     }
 
     //START
