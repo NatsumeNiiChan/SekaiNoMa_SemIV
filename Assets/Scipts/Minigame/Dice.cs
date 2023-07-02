@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Dice : MonoBehaviour
 {
     //Scripts
-    //-
+    private MouseRay S_MouseRay;
 
 //VARIABLES
 
@@ -76,6 +77,7 @@ public class Dice : MonoBehaviour
     //Finding Calls
         
         //Scripts
+        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
         //GameObjects
         FindingCall_Dice();
         //Text
@@ -477,6 +479,7 @@ public class Dice : MonoBehaviour
         {
             Debug.Log("Game finished successfully: All Tokens traded");
             _Screen_Win.SetActive(true);
+            Invoke("LoadMainScene", 5);
         }
         else if (_PlayerToken_Red == 10 && _PlayerToken_Blue == 10)
         {
@@ -497,7 +500,10 @@ public class Dice : MonoBehaviour
         
     }
 
-
+    public void LoadMainScene()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 
 
 

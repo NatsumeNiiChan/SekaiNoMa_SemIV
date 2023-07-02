@@ -10,6 +10,10 @@ TagManager:
   - DiaryPages
   - Ingredient
   - Tool
+  - Mamoru
+  - Takeru
+  - Nanami
+  - RecipeOvergroup
   layers:
   - Default
   - TransparentFX
@@ -71,9 +75,9 @@ TagManager:
   - name: Tools_out
     uniqueID: 1952205655
     locked: 0
-  - name: Ingredients_Out
-    uniqueID: 1088681563
-    locked: 0
   - name: Foreground
     uniqueID: 659401367
+    locked: 0
+  - name: Ingredients_Out
+    uniqueID: 1088681563
     locked: 0

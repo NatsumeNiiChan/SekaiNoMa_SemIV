@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Dialog : MonoBehaviour
 {
@@ -25,7 +26,6 @@ public class Dialog : MonoBehaviour
     //[HideInInspector]
     public int _Index = 0;
 
-    
 
 
 
@@ -50,7 +50,11 @@ public class Dialog : MonoBehaviour
         _CharacterCounter = 0;
         _Index = 0;
         Txt_Dialog.text = string.Empty;
-        
+
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
         StartDialog();
     }
 
@@ -81,6 +85,9 @@ public class Dialog : MonoBehaviour
         {
             if (_CharacterCounter == 0) /* Takeru */
             {
+                //call animation
+                S_MouseRay.TakeruStartAnimator.SetTrigger("TakeruStart");
+
                 S_MouseRay._KikakuRamen = false;
                 S_MouseRay._TonbaraRamen = true;
                 _DialogCounter = 0;
@@ -90,6 +97,11 @@ public class Dialog : MonoBehaviour
 
             if (_CharacterCounter == 1) /* Mamoru */
             {
+                //call animation
+
+                S_MouseRay.MamoruStartAnimator.SetTrigger("MamoruStart");
+
+
                 S_MouseRay._KikakuRamen = true;
                 S_MouseRay._TonbaraRamen = false;
 
@@ -101,6 +113,10 @@ public class Dialog : MonoBehaviour
 
             if (_CharacterCounter == 2) /* Nanami */
             {
+                //call animation
+                S_MouseRay.NanamiStartAnimator.SetTrigger("NanamiStart");
+
+
                 S_MouseRay._KikakuRamen = false;
                 S_MouseRay._TonbaraRamen = true;
                 _DialogCounter = 0;
@@ -490,7 +506,7 @@ public class Dialog : MonoBehaviour
                 Debug.Log("Dialog End");
                 _Index = 0;
                 // DO THE END OF GAME THINGS?
-                //StartDialog();
+                SceneManager.LoadScene("MinigameChouHan");
             }
         }
 
@@ -507,6 +523,7 @@ public class Dialog : MonoBehaviour
                 Debug.Log("Dialog End");
                 _Index = 0;
                 // DO THE END OF GAME THINGS?
+                SceneManager.LoadScene("MinigameChouHan");
 
             }
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class MouseRay : MonoBehaviour
 {
@@ -36,6 +37,22 @@ public class MouseRay : MonoBehaviour
     private Animator[] A_Ingredient_Animators  = new Animator[12];
     private Animator[] A_Tool_Animators         = new Animator[2];
 
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //CHARACTERS
+
+    [HideInInspector]
+    public Animator TakeruStartAnimator; 
+    [HideInInspector] 
+    public Animator MamoruStartAnimator; 
+    [HideInInspector] 
+    public Animator NanamiStartAnimator;
+
+
+
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
     //RECIPE
     public int _IngredientCounter; /* Recipes have 10 ingredients */
     //Which ramen?
@@ -48,6 +65,8 @@ public class MouseRay : MonoBehaviour
     private GameObject _KikakuUI;
     private GameObject _TonbaraUI;
 
+    private Button B_Serve;
+
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //TALKING
@@ -55,11 +74,15 @@ public class MouseRay : MonoBehaviour
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//START
-    void Start()
+    //START
+    void Awake()
     {
+
         _MainCamera = Camera.main;
         S_Dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
+
+        //Recipe UI
+        FindingCall_RecipesUI();
 
         //Get Cupboard Doors
         A_CupboardDoor = GameObject.FindGameObjectsWithTag("Cupboard_Door");
@@ -74,8 +97,12 @@ public class MouseRay : MonoBehaviour
         FindingCall_Tool_Animators();
         FindingCall_Ingredient_Sprite();
 
-        //Recipe UI
-        FindingCall_RecipesUI();
+        //Characters
+        FindingCall_Chara_Animators();
+
+        //_DontDestroyObject = GameObject.Find("_DontDestroyObject");
+
+
 
         //Set Cupboard_Doors Vanilla Positions
         A_DoorVanillaPosition = A_CupboardDoor.Select(p => p.transform.position).ToArray();
@@ -87,6 +114,8 @@ public class MouseRay : MonoBehaviour
     {
         ObjectDetectionbyMouse();
         CloseUI();
+
+        ServeButton();
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -458,13 +487,27 @@ public class MouseRay : MonoBehaviour
                 S_Dialog._DialogCounter = 2;
 
                 S_Dialog._Index = 0;
-
+                
             }
 
         }
         //Tonbara:
         //Egg, Nori, SojaBean, Lotus, Scallions, PorkBelly, Naruto
         //Pot_Noodles: Udon, BeefBroth, NoodleWater
+    }
+
+    public void ServeButton()
+    {
+        if (_IngredientCounter == 9)
+        {
+            B_Serve.interactable = true;
+
+        }
+        else if (_IngredientCounter < 9)
+        {
+            B_Serve.interactable = false;
+        }
+
     }
 
     public void RecipeUI()
@@ -474,13 +517,14 @@ public class MouseRay : MonoBehaviour
         {
             _RecipeOvergroup.SetActive(true);
             _KikakuUI.SetActive(true);
-
+            _TonbaraUI.SetActive(false);
 
         }
         if (_TonbaraRamen == true)
         {
             _RecipeOvergroup.SetActive(true);
             _TonbaraUI.SetActive(true);
+            _KikakuUI.SetActive(false);
         }
 
     }
@@ -532,6 +576,17 @@ public class MouseRay : MonoBehaviour
 
     }
 
+    public void FindingCall_Ingredient_Sprite()
+    {
+
+        for (int i = 0; i < A_IngredientSprite.Length; i++)
+        {
+            A_IngredientSprite[i] = A_IngredientList[i].GetComponent<SpriteRenderer>();
+
+        }
+
+
+    }
     public void FindingCall_Ingredient_Animators()
     {
 
@@ -551,29 +606,33 @@ public class MouseRay : MonoBehaviour
         
 
     }
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    public void FindingCall_Ingredient_Sprite()
+    public void FindingCall_Chara_Animators()
     {
-
-        for (int i = 0; i < A_IngredientSprite.Length; i++)
-        {
-            A_IngredientSprite[i] = A_IngredientList[i].GetComponent<SpriteRenderer>();
-            
-        }
-
+        TakeruStartAnimator = GameObject.Find("Takeru2.1_Start").GetComponent<Animator>();
+        MamoruStartAnimator = GameObject.Find("Mamoru2.3_Start").GetComponent<Animator>();
+        NanamiStartAnimator = GameObject.Find("Nanami1.3_Start").GetComponent<Animator>();
 
     }
+    
+
+
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     public void FindingCall_RecipesUI()
     {
         //_RecipeOvergroup = GameObject.Find("Recipes");
         _KikakuUI = GameObject.Find("Recipe_Kikaku");
         _TonbaraUI = GameObject.Find("Recipe_Tonbara");
-        _RecipeOvergroup = GameObject.Find("Recipes");
+        _RecipeOvergroup = GameObject.FindGameObjectWithTag("RecipeOvergroup");
         _KikakuUI.SetActive(false);
         _TonbaraUI.SetActive(false);
         _RecipeOvergroup.SetActive(false);
 
+        B_Serve = GameObject.Find("B_Serve").GetComponent<Button>();
+        B_Serve.interactable = false;
     }
 }
 

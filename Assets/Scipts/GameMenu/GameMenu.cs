@@ -60,7 +60,11 @@ public class GameMenu : MonoBehaviour
 
     }
 
+    public void Extras()
+    {
+        //SceneManager.LoadScene("Extras);
 
+    }
 
 //FINDING CALLS
 
