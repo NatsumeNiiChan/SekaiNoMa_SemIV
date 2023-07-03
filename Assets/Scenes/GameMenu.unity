@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1866268721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f0ba3043c6f1246a9d98e82c2747b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 732edcee7e271a846b1fd573f89f8819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1889722788
@@ -2620,10 +2620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
