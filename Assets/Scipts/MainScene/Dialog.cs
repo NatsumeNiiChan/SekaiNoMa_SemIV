@@ -10,6 +10,7 @@ public class Dialog : MonoBehaviour
     //[HideInInspector] public MouseRay S_MouseRay;
     [HideInInspector] public Dialog_Text S_Dialog_Text;
     [HideInInspector] public MouseRay S_MouseRay;
+    [HideInInspector] public CharaVisual_Name S_CharaVisual_Name;
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -36,6 +37,7 @@ public class Dialog : MonoBehaviour
         //S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
         S_Dialog_Text = GameObject.Find("DialogManager").GetComponent<Dialog_Text>();
         S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+        S_CharaVisual_Name = GameObject.Find("GameManager").GetComponent<CharaVisual_Name>();
 
 
         //Get Stuff
@@ -245,6 +247,8 @@ public class Dialog : MonoBehaviour
             {
                 Debug.Log(_Index);
                 Debug.Log("Dialog-TCorrect End");
+                //S_CharaVisual_Name.SpriteTakeruVisuals[7].enabled = true;
+                S_MouseRay.NanamiStartAnimator.SetTrigger("TakeruOut");
                 _CharacterCounter = 1;
                 _Index = 0;
                 StartDialog();
@@ -264,6 +268,8 @@ public class Dialog : MonoBehaviour
             {
                 Debug.Log("Dialog-TWrong End");
                 Debug.Log(_Index);
+                //S_CharaVisual_Name.SpriteTakeruVisuals[7].enabled = true;
+                S_MouseRay.NanamiStartAnimator.SetTrigger("TakeruOut");
                 _CharacterCounter = 1;
                 _Index = 0;
                 StartDialog();
@@ -376,6 +382,8 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Correct.Length -1)
             {
                 Debug.Log("Dialog End");
+                //S_CharaVisual_Name.SpriteMamoruVisuals[1].enabled = true;
+                S_MouseRay.NanamiStartAnimator.SetTrigger("MamoruOut");
                 _CharacterCounter = 2;
                 _Index = 0;
                 StartDialog();
@@ -393,6 +401,8 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_Wrong.Length - 1)
             {
                 Debug.Log("Dialog End");
+                //S_CharaVisual_Name.SpriteMamoruVisuals[1].enabled = true;
+                S_MouseRay.NanamiStartAnimator.SetTrigger("MamoruOut");
                 _CharacterCounter = 2;
                 _Index = 0;
                 StartDialog();
@@ -504,9 +514,11 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Nanami_Correct.Length - 1)
             {
                 Debug.Log("Dialog End");
+                //S_CharaVisual_Name.SpriteNanamiVisuals[9].enabled = true;
+                S_MouseRay.NanamiStartAnimator.SetTrigger("NanamiOutRight");
                 _Index = 0;
                 // DO THE END OF GAME THINGS?
-                SceneManager.LoadScene("MinigameChouHan");
+                Invoke("MinigameLoad", 3f);
             }
         }
 
@@ -521,16 +533,21 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Nanami_Wrong.Length - 1)
             {
                 Debug.Log("Dialog End");
+                //S_CharaVisual_Name.SpriteNanamiVisuals[4].enabled = true;
+                S_MouseRay.NanamiStartAnimator.SetTrigger("NanamiOutWrong");
                 _Index = 0;
                 // DO THE END OF GAME THINGS?
-                SceneManager.LoadScene("MinigameChouHan");
+                Invoke("MinigameLoad", 3f);
 
             }
         }
 
     }
 
-
+    public void MinigameLoad()
+    {
+        SceneManager.LoadScene("MinigameChouHan");
+    }
 
     public void B_DialogFunction()
     {

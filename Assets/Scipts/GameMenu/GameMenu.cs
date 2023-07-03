@@ -19,7 +19,7 @@ public class GameMenu : MonoBehaviour
 //START
     void Start()
     {
-        S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
+        S_SceneManagement = GameObject.Find("SceneManagement").GetComponent<SceneManagement>();
 
         //FindingCall_Buttons();
 
@@ -62,7 +62,7 @@ public class GameMenu : MonoBehaviour
 
     public void Extras()
     {
-        //SceneManager.LoadScene("Extras);
+        SceneManager.LoadScene("Credits");
 
     }
 

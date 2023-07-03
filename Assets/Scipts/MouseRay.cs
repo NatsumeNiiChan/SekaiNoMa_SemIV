@@ -15,6 +15,7 @@ public class MouseRay : MonoBehaviour
 
 
 
+
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //CUPBOARD
@@ -106,6 +107,8 @@ public class MouseRay : MonoBehaviour
 
         //Set Cupboard_Doors Vanilla Positions
         A_DoorVanillaPosition = A_CupboardDoor.Select(p => p.transform.position).ToArray();
+
+
 
     }
 
@@ -539,6 +542,10 @@ public class MouseRay : MonoBehaviour
 
 
     }
+
+
+
+
 
 //TEst
     /*public void KikakuTest()

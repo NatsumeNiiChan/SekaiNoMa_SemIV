@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
 //START
     void Start()
     {
-        S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
+        S_SceneManagement = GameObject.Find("SceneManagement").GetComponent<SceneManagement>();
 
 
         _PauseMenu = GameObject.Find("PauseScreen");
