@@ -34,9 +34,15 @@ public class GameMenu : MonoBehaviour
         
     }
 
-//FUNCTIONS
+    //FUNCTIONS
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("MainScene");
 
-    public void StartGame()
+    }
+
+    public void ContinueGame()
     {
         SceneManager.LoadScene("MainScene");
 
@@ -62,7 +68,7 @@ public class GameMenu : MonoBehaviour
 
     public void Extras()
     {
-        //SceneManager.LoadScene("Extras);
+        SceneManager.LoadScene("Credits");
 
     }
 

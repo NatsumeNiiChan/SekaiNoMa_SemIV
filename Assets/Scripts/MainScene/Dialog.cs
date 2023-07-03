@@ -54,8 +54,9 @@ public class Dialog : MonoBehaviour
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
+        LoadData();
         StartDialog();
+        
     }
 
 //UPDATE
@@ -531,6 +532,26 @@ public class Dialog : MonoBehaviour
     }
 
 
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt("_Index", _Index);
+        PlayerPrefs.SetInt("_CharacterCounter", _CharacterCounter);
+        PlayerPrefs.SetInt("_DialogCounter", _DialogCounter);
+
+        Debug.Log(_Index);
+        Debug.Log(_CharacterCounter);
+        Debug.Log(_DialogCounter);
+    }
+    public void LoadData()
+    {
+        _Index = PlayerPrefs.GetInt("_Index");
+        _CharacterCounter = PlayerPrefs.GetInt("_CharacterCounter");
+        _DialogCounter = PlayerPrefs.GetInt("_DialogCounter");
+
+        Debug.Log(_Index);
+        Debug.Log(_CharacterCounter);
+        Debug.Log(_DialogCounter);
+    }
 
     public void B_DialogFunction()
     {

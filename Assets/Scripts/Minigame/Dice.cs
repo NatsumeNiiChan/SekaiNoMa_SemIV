@@ -25,49 +25,49 @@ public class Dice : MonoBehaviour
     Quaternion Q_Dice_6 = Quaternion.Euler(0, 90, -90);
 
     [Header("Random_Number")]
-    public int[] _DiceNumber = new int[3];
-    public int   _DiceSum;
-    public TMP_Text Txt_DiceSum;
+    private int[] _DiceNumber = new int[3];
+    private int   _DiceSum;
+    private TMP_Text Txt_DiceSum;
 
     [Header("Buttons")]
-    public GameObject B_Player_Even;
-    public GameObject B_Player_Odd;
-    public GameObject B_Nanami_Even;
-    public GameObject B_Nanami_Odd;
-    public GameObject B_NextRound;
+    private GameObject B_Player_Even;
+    private GameObject B_Player_Odd;
+    private GameObject B_Nanami_Even;
+    private GameObject B_Nanami_Odd;
+    private GameObject B_NextRound;
 
     [Header("ScoreCounters")]
     //Red = DANGER | Blue = SAFETY
-    public int _PlayerToken_Red = 0;
-    public int _PlayerToken_Blue = 10;
-    public int _NanamiToken_Red = 10;
-    public int _NanamiToken_Blue = 0;
+    private int _PlayerToken_Red = 0;
+    private int _PlayerToken_Blue = 10;
+    private int _NanamiToken_Red = 10;
+    private int _NanamiToken_Blue = 0;
     //ScoreCount Text
-    public TMP_Text Txt_PlayerToken_Red;
-    public TMP_Text Txt_PlayerToken_Blue;
-    public TMP_Text Txt_NanamiToken_Red;
-    public TMP_Text Txt_NanamiToken_Blue;
+    private TMP_Text Txt_PlayerToken_Red;
+    private TMP_Text Txt_PlayerToken_Blue;
+    private TMP_Text Txt_NanamiToken_Red;
+    private TMP_Text Txt_NanamiToken_Blue;
 
     [Header("EndScreens")]
-    public GameObject _Screen_Win;
-    public GameObject _Screen_Loss;
+    private GameObject _Screen_Win;
+    private GameObject _Screen_Loss;
 
     [Header("Bet Results")]
-    public TMP_Text Txt_Bet_Nanami;
-    public TMP_Text Txt_Bet_Player;
+    private TMP_Text Txt_Bet_Nanami;
+    private TMP_Text Txt_Bet_Player;
 
     //Bools for Playerbets
-    public bool _Even;
-    public bool _Odd;
+    private bool _Even;
+    private bool _Odd;
 
     //Random Even/Odd bool for nanamis bet
-    public bool _Nanami_HasBet;
-    public bool _Nanami_Even_Bool;
-    public int  _Nanami_Even_Int;
+    private bool _Nanami_HasBet;
+    private bool _Nanami_Even_Bool;
+    private int  _Nanami_Even_Int;
 
     //bools for whose turn it is to bet first (player always starts in new round, nanami not)
-    public bool _PlayerTurn = true;
-    public bool _NanamiTurn = false;
+    private bool _PlayerTurn = true;
+    private bool _NanamiTurn = false;
 
 
 //START

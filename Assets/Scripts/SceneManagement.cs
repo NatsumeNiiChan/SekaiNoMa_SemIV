@@ -34,7 +34,11 @@ public class SceneManagement : MonoBehaviour
 
     }
 
+    public void GotoCutscene()
+    {
+        SceneManager.LoadScene("EndCutscene");
 
+    }
 
 
 }

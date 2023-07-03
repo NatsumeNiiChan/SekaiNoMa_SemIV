@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4420908692496369408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4420908692496369410}
+  - component: {fileID: 4420908692496369411}
+  - component: {fileID: 4420908692496369413}
+  m_Layer: 0
+  m_Name: DialogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4420908692496369410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420908692496369408}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.53911275, y: -4.328475, z: -0.056305964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4420908692496369411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420908692496369408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df40326e27be4342b1a2a6460b3862c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  A_Dialog_Takeru_General:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Takeru_Correct:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Takeru_Wrong:
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Mamoru_General:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Mamoru_Correct:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Mamoru_Wrong:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Nanami_General:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Nanami_Correct:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  A_Dialog_Nanami_Wrong:
+  - 
+  - 
+  - 
+--- !u!114 &4420908692496369413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420908692496369408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc668f7615e6fa740bcb012253cc7b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  S_Dialog_Text: {fileID: 0}
+  S_MouseRay: {fileID: 0}
+  _TextBox: {fileID: 0}
+  Txt_Dialog: {fileID: 0}
+  _TextSpeed: 0.04
+  _DialogCounter: 0
+  _CharacterCounter: 0
+  _Index: 0

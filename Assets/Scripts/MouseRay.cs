@@ -67,6 +67,12 @@ public class MouseRay : MonoBehaviour
 
     private Button B_Serve;
 
+
+    private GameObject RamenProgress;
+    private GameObject TonbaraDone;
+    private GameObject KikakuDone;
+
+
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //TALKING
@@ -116,6 +122,7 @@ public class MouseRay : MonoBehaviour
         CloseUI();
 
         ServeButton();
+        
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -219,8 +226,8 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientSprite[0].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[0] = true;
                                 _IngredientCounter++;
-                                
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[1]) /*Lotus*/
                             {
@@ -228,8 +235,8 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientSprite[1].sortingLayerName = "Ingredients_Out";
                                 A_IngredientChosen[1] = true;
                                 _IngredientCounter++;
-                                
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[2]) /*Meat*/
                             {
@@ -239,6 +246,7 @@ public class MouseRay : MonoBehaviour
                                 _IngredientCounter++;
                                 Debug.Log("Porkanim");
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[3]) /*Menma*/
                             {
@@ -247,6 +255,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[3] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[4]) /*Naruto*/
                             {
@@ -255,6 +264,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[4] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[5]) /*Nori*/
                             {
@@ -263,6 +273,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[5] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[6]) /*PakChoi*/
                             {
@@ -271,6 +282,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[6] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[7]) /*PorkBelly*/
                             {
@@ -279,6 +291,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[7] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[8]) /*Shiitake*/
                             {
@@ -287,6 +300,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[8] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[9]) /*SojaBean*/
                             {
@@ -295,6 +309,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[9] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[10]) /*Scallions*/
                             {
@@ -303,6 +318,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[10] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_IngredientList[11]) /*Wakame*/
                             {
@@ -311,6 +327,7 @@ public class MouseRay : MonoBehaviour
                                 A_IngredientChosen[11] = true;
                                 _IngredientCounter++;
 
+                                RamenVisualProgress();
                             }
                         }
 
@@ -329,7 +346,7 @@ public class MouseRay : MonoBehaviour
                                     {
                                         A_ToolList[6].SetActive(false);
                                     }
-
+                                    RamenVisualProgress();
                                 }
                                 else if (_TonbaraRamen == true)
                                 {
@@ -338,6 +355,7 @@ public class MouseRay : MonoBehaviour
                                     {
                                         A_ToolList[6].SetActive(false);
                                     }
+                                    RamenVisualProgress();
                                 }
                                 
                                 //A_Tool_Animators[0].SetTrigger("FillNoodles");
@@ -355,7 +373,7 @@ public class MouseRay : MonoBehaviour
                                     A_ToolList[3].SetActive(false);
                                 }
 
-
+                                RamenVisualProgress();
 
                             }
                             if (hit.collider.gameObject == A_ToolList[2]) /*HishakuFull*/
@@ -363,37 +381,37 @@ public class MouseRay : MonoBehaviour
                                 A_Tool_Animators[0].SetTrigger("FillBowl");
                                 A_ToolChosen[0] = true; 
                                 _IngredientCounter++;
-                                
 
-                                
+
+                                RamenVisualProgress();
 
                             }
                             if (hit.collider.gameObject == A_ToolList[3]) /*HishakuEmpty*/
                             {
                                 //A_Tool_Animators[3].SetTrigger("HishakuFull");                                
                                 //_IngredientCounter++;
-
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_ToolList[4]) /*TeboKikakuSoba*/ 
                             {
                                 A_Tool_Animators[1].SetTrigger("FillKikakuSoba");
                                 A_ToolChosen[1] = true;
                                 _IngredientCounter++;
-
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_ToolList[5]) /*TeboTonbaraUdon*/
                             {
                                 A_Tool_Animators[1].SetTrigger("FillTonbaraUdon");
                                 A_ToolChosen[2] = true;
                                 _IngredientCounter++;
-
+                                RamenVisualProgress();
                             }
                             if (hit.collider.gameObject == A_ToolList[6]) /*TeboEmpty*/
                             {
                                 //A_Tool_Animators[6].SetTrigger("TeboUdon");
                                 //A_ToolChosen[6] = true;
                                 //_IngredientCounter++;
-
+                                RamenVisualProgress();
                             }
 
                         }
@@ -540,21 +558,38 @@ public class MouseRay : MonoBehaviour
 
     }
 
-//TEst
-    /*public void KikakuTest()
-    {
-        _KikakuRamen = true;
-        _TonbaraRamen = false;
-        Debug.Log(_KikakuRamen);
-    }
-    public void TonbaraTest()
-    {
-        _TonbaraRamen = true;
-        _KikakuRamen = false;
-        Debug.Log(_TonbaraRamen);
-    }*/
 
-    //Animation Events
+    public void RamenVisualProgress()
+    {
+        if (_IngredientCounter == 0)
+        {
+            RamenProgress.SetActive(false);
+            TonbaraDone.SetActive(false);
+            KikakuDone.SetActive(false);
+        }
+        if (_IngredientCounter > 0)
+        {
+            RamenProgress.SetActive(true);
+        }
+        if (_IngredientCounter == 9)
+        {
+            RamenProgress.SetActive(false);
+            if (_KikakuRamen == true)
+            {
+                KikakuDone.SetActive(false);
+            }
+            if (_TonbaraRamen == true)
+            {
+                TonbaraDone.SetActive(false);
+            }
+            
+            
+
+        }
+
+
+
+    }
 
 
 
@@ -585,6 +620,12 @@ public class MouseRay : MonoBehaviour
 
         }
 
+        RamenProgress = GameObject.Find("Progress");
+        RamenProgress.SetActive(false);
+        TonbaraDone = GameObject.Find("TonbaraDone");
+        TonbaraDone.SetActive(false);
+        KikakuDone = GameObject.Find("KikakuDone");
+        KikakuDone.SetActive(false);
 
     }
     public void FindingCall_Ingredient_Animators()

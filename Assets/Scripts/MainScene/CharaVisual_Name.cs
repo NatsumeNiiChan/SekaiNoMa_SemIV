@@ -11,12 +11,9 @@ public class CharaVisual_Name : MonoBehaviour
 
     //Dialog Names
     [HideInInspector]
-    public string[] A_Dialog_Names = new string[4];
+    public GameObject[] A_Dialog_Names = new GameObject[4];
     [HideInInspector] public TMP_Text Txt_Name;
 
-    private int Test1;
-    private int Test2;
-    private int Test3;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -41,9 +38,9 @@ public class CharaVisual_Name : MonoBehaviour
         S_Dialog = GameObject.Find("DialogManager").GetComponent<Dialog>();
 
         FindingCall_Chara_Visuals();
+        Dialog_Names();
 
-        //
-        Txt_Name = GameObject.Find("Name").GetComponent<TMP_Text>();
+        //Txt_Name = GameObject.Find("Name").GetComponent<TMP_Text>();
 
 
 
@@ -60,12 +57,15 @@ public class CharaVisual_Name : MonoBehaviour
 
     public void Dialog_Names()
     {
-        A_Dialog_Names[0] = "Player";
-        A_Dialog_Names[1] = "Takeru";
-        A_Dialog_Names[2] = "Mamoru";
-        A_Dialog_Names[3] = "Nanami";
+        A_Dialog_Names[0] = GameObject.Find("PlayerName");
+        A_Dialog_Names[1] = GameObject.Find("TakeruName");
+        A_Dialog_Names[2] = GameObject.Find("MamoruName");
+        A_Dialog_Names[3] = GameObject.Find("NanamiName");
 
-
+        for (int i = 0; i < A_Dialog_Names.Length; i++)
+        {
+            A_Dialog_Names[i].SetActive(false);
+        }
     }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -73,15 +73,302 @@ public class CharaVisual_Name : MonoBehaviour
 
     public void Dialog_WhichName()
     {
-        if (   Test1 == Test2 
-            && Test2 == Test3)
+        //Takeru
+        if(S_Dialog._CharacterCounter == 0)
         {
+            //General
+            if (S_Dialog._DialogCounter == 0)
+            {
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3 ||
+                    S_Dialog._Index == 5 ||
+                    S_Dialog._Index == 7 ||
+                    S_Dialog._Index == 9 ||
+                    S_Dialog._Index == 11 ||
+                    S_Dialog._Index == 13)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[1].SetActive(true);
 
+                }
+                if (S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4 ||
+                    S_Dialog._Index == 6 ||
+                    S_Dialog._Index == 8 ||
+                    S_Dialog._Index == 10 ||
+                    S_Dialog._Index == 12)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+            //Correct
+            if (S_Dialog._DialogCounter == 1)
+            {
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3 ||
+                    S_Dialog._Index == 5 ||
+                    S_Dialog._Index == 7 ||
+                    S_Dialog._Index == 9)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[1].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4 ||
+                    S_Dialog._Index == 6 ||
+                    S_Dialog._Index == 8 ||
+                    S_Dialog._Index == 10)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+            //Wrong
+            if (S_Dialog._DialogCounter == 2)
+            {
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[1].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
 
         }
-        // IF( INDEX == ? && CharacterCounter == ? && CharacterCounter == ?), PICK THIS NAME
-        //If function up above just as a visual of how to do it?
 
+        //Mamoru
+        if (S_Dialog._CharacterCounter == 1)
+        {
+            //General
+            if (S_Dialog._DialogCounter == 0)
+            {
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4 ||
+                    S_Dialog._Index == 6 ||
+                    S_Dialog._Index == 8 ||
+                    S_Dialog._Index == 10 ||
+                    S_Dialog._Index == 12)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[2].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3 ||
+                    S_Dialog._Index == 5 ||
+                    S_Dialog._Index == 7 ||
+                    S_Dialog._Index == 9 ||
+                    S_Dialog._Index == 11 ||
+                    S_Dialog._Index == 13 ||
+                    S_Dialog._Index == 14)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+            //Correct
+            if (S_Dialog._DialogCounter == 1)
+            {
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3 ||
+                    S_Dialog._Index == 5 ||
+                    S_Dialog._Index == 7 ||
+                    S_Dialog._Index == 9 ||
+                    S_Dialog._Index == 11 ||
+                    S_Dialog._Index == 13 ||
+                    S_Dialog._Index == 15)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[2].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4 ||
+                    S_Dialog._Index == 6 ||
+                    S_Dialog._Index == 8 ||
+                    S_Dialog._Index == 10 ||
+                    S_Dialog._Index == 12 ||
+                    S_Dialog._Index == 14)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+            //Wrong
+            if (S_Dialog._DialogCounter == 2)
+            {
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[2].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+
+        }
+
+        //Nanami
+        if (S_Dialog._CharacterCounter == 2)
+        {
+            //General
+            if (S_Dialog._DialogCounter == 0)
+            {
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4 ||
+                    S_Dialog._Index == 6 ||
+                    S_Dialog._Index == 8 ||
+                    S_Dialog._Index == 10)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[3].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 3 ||
+                    S_Dialog._Index == 5 ||
+                    S_Dialog._Index == 7 ||
+                    S_Dialog._Index == 9 ||
+                    S_Dialog._Index == 11 ||
+                    S_Dialog._Index == 12)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+            //Correct
+            if (S_Dialog._DialogCounter == 1)
+            {
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 2 ||
+                    S_Dialog._Index == 4 ||
+                    S_Dialog._Index == 6 ||
+                    S_Dialog._Index == 7)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[3].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 0 ||
+                    S_Dialog._Index == 3 ||
+                    S_Dialog._Index == 5)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+            //Wrong
+            if (S_Dialog._DialogCounter == 2)
+            {
+                if (S_Dialog._Index == 1 ||
+                    S_Dialog._Index == 2)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[3].SetActive(true);
+
+                }
+                if (S_Dialog._Index == 0)
+                {
+                    for (int i = 0; i < A_Dialog_Names.Length; i++)
+                    {
+                        A_Dialog_Names[i].SetActive(false);
+                    }
+                    A_Dialog_Names[0].SetActive(true);
+
+                }
+
+            }
+
+        }
     }
 
     public void Dialog_Visual()
