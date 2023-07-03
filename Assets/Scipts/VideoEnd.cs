@@ -2,28 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class VideoEnd : MonoBehaviour
 {
-    private VideoPlayer videoPlayer;
+    public VideoPlayer videoPlayer;
     private GameObject introScreen;
-    private AudioSource audioSource;
+    //private AudioSource audioSource;
 
     private void Awake()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
-        introScreen = GameObject.Find("Intro");
-        audioSource = FindObjectOfType<AudioSource>();
+        videoPlayer = GameObject.Find("VideoPlayer").GetComponent<VideoPlayer>();
 
-        audioSource.mute = true;
     }
 
     private void Update()
     {
-        if (videoPlayer.isPlaying == false)
-        {
-            introScreen.SetActive(false);
-            audioSource.mute = false;
-        }
+        Invoke("LoadCredits", 52);
+
+
     }
+
+
+
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+
+    }
+
 }

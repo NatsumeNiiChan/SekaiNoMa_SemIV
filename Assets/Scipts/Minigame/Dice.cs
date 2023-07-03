@@ -69,15 +69,17 @@ public class Dice : MonoBehaviour
     public bool _PlayerTurn = true;
     public bool _NanamiTurn = false;
 
+    
 
 //START
     void Start()
     {
 
+
     //Finding Calls
         
         //Scripts
-        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+        S_MouseRay = GameObject.Find("DiceGameManager").GetComponent<MouseRay>();
         //GameObjects
         FindingCall_Dice();
         //Text
@@ -479,7 +481,7 @@ public class Dice : MonoBehaviour
         {
             Debug.Log("Game finished successfully: All Tokens traded");
             _Screen_Win.SetActive(true);
-            Invoke("LoadMainScene", 5);
+            Invoke("LoadEndScene", 3);
         }
         else if (_PlayerToken_Red == 10 && _PlayerToken_Blue == 10)
         {
@@ -500,9 +502,9 @@ public class Dice : MonoBehaviour
         
     }
 
-    public void LoadMainScene()
+    public void LoadEndScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("EndScene");
     }
 
 
