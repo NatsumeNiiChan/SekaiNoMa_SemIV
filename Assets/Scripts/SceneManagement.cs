@@ -9,7 +9,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        
         
     }
 

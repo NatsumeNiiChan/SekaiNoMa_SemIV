@@ -43,7 +43,7 @@ public class CharaVisual_Name : MonoBehaviour
         //Txt_Name = GameObject.Find("Name").GetComponent<TMP_Text>();
 
 
-
+        Dialog_WhichName();
 
     }
 
@@ -379,7 +379,7 @@ public class CharaVisual_Name : MonoBehaviour
             //General
             if (S_Dialog._DialogCounter == 0)
             {
-                if (S_Dialog._Index == 0 || S_Dialog._Index == 13) /* 2.1 */
+                if (S_Dialog._Index == 0 ) /* 2.1 */
                 {
                     for (int i = 0; i < SpriteTakeruVisuals.Length; i++)
                     {
@@ -397,13 +397,13 @@ public class CharaVisual_Name : MonoBehaviour
                     SpriteTakeruVisuals[0].enabled = true;
 
                 }
-                if (S_Dialog._Index == 2) /* 2.2 */
+                if (S_Dialog._Index == 2 || S_Dialog._Index == 13) /* 2.2 */
                 {
                     for (int i = 0; i < SpriteTakeruVisuals.Length; i++)
                     {
                         SpriteTakeruVisuals[i].enabled = false;
                     }
-                    SpriteTakeruVisuals[9].enabled = true;
+                    SpriteTakeruVisuals[0].enabled = true;
                 }
                 if (S_Dialog._Index == 3) /* 1.2 */
                 {
@@ -598,7 +598,7 @@ public class CharaVisual_Name : MonoBehaviour
             //Correct
             if (S_Dialog._DialogCounter == 1)
                 {
-                    if (S_Dialog._Index == 0 || S_Dialog._Index == 2) /* 1.1 */
+                    if (S_Dialog._Index == 0) /* 1.1 */
                     {
                         for (int i = 0; i < SpriteMamoruVisuals.Length; i++)
                         {
@@ -628,7 +628,7 @@ public class CharaVisual_Name : MonoBehaviour
                         {
                             SpriteMamoruVisuals[i].enabled = false;
                         }
-                        SpriteMamoruVisuals[4].enabled = true;
+                        SpriteMamoruVisuals[3].enabled = true;
                     }
                     if (S_Dialog._Index == 7 || S_Dialog._Index == 8) /* 2.2 */
                     {
@@ -636,15 +636,15 @@ public class CharaVisual_Name : MonoBehaviour
                         {
                             SpriteMamoruVisuals[i].enabled = false;
                         }
-                        SpriteMamoruVisuals[5].enabled = true;
+                        SpriteMamoruVisuals[4].enabled = true;
                     }
-                    if (S_Dialog._Index == 6 || S_Dialog._Index == 9 || S_Dialog._Index == 10) /* 2.3 */
+                    if (S_Dialog._Index == 5 || S_Dialog._Index == 6 || S_Dialog._Index == 9 || S_Dialog._Index == 10) /* 2.3 */
                     {
                         for (int i = 0; i < SpriteMamoruVisuals.Length; i++)
                         {
                             SpriteMamoruVisuals[i].enabled = false;
                         }
-                        SpriteMamoruVisuals[6].enabled = true;
+                        SpriteMamoruVisuals[5].enabled = true;
                     }
                     if (S_Dialog._Index == 15) /* LEAF */
                     {

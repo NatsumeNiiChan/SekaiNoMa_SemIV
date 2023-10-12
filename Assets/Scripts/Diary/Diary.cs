@@ -14,16 +14,19 @@ public class Diary : MonoBehaviour
     //Counter
     private int _PageCounter = 0;
 
+    private int DNewGameInt;
+    private GameObject ToNewButton;
 
 //START
-    void Start()
+    void Awake()
     {
         S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
-
+        ToNewButton = GameObject.Find("B_GoToNewGame");
+        ToNewButton.SetActive(false);
         FindingCall_DiaryPages();
         Disable_DiaryPages();
-
-        Debug.Log(S_SceneManagement._SceneIndex);
+        NewGameButtonVisibility();
+        //Debug.Log(S_SceneManagement._SceneIndex);
     }
 
 //UPDATE
@@ -60,9 +63,31 @@ public class Diary : MonoBehaviour
         
     }
 
+    public void NewGameButtonVisibility()
+    {
+        DNewGameInt = PlayerPrefs.GetInt("NewGameInt");
+        Debug.Log(DNewGameInt);
+        if (DNewGameInt == 1)
+        {
+            ToNewButton.SetActive(true);
+
+        }
+        if (DNewGameInt == 0)
+        {
+            ToNewButton.SetActive(false);
+        }
+
+    }
+    
+    public void NewGameButton()
+    {
+        SceneManager.LoadScene("MainScene");
+
+    }
 
 
-    public void PreviousSceneBack()
+
+    /*public void PreviousSceneBack()
     {
         if (SceneManager.GetActiveScene().buildIndex - S_SceneManagement._SceneIndex == 1)
         {
@@ -82,6 +107,16 @@ public class Diary : MonoBehaviour
             SceneManager.LoadScene("GameMenu");
 
         }
+    }*/
+
+    public void BacktoGame()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void BacktoMenu()
+    {
+        SceneManager.LoadScene("GameMenu");
     }
 
     //FINDING CALLS
@@ -98,11 +133,12 @@ public class Diary : MonoBehaviour
 
     public void Disable_DiaryPages()
     {
-        for (int i = 1; i < A_DiaryPages.Length; i++)
+        for (int i = 0; i < A_DiaryPages.Length; i++)
         {
             A_DiaryPages[i].SetActive(false);
 
         }
+        A_DiaryPages[13].SetActive(true);
     }
 
 }

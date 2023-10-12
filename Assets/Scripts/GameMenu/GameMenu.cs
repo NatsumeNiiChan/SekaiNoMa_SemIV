@@ -15,17 +15,19 @@ public class GameMenu : MonoBehaviour
     //private GameObject B_Settings;
     //private GameObject B_Diary;
 
+    [HideInInspector] public bool NewGameBool;
+    [HideInInspector] public int NewGameInt;
 
 //START
     void Start()
     {
-        S_SceneManagement = GameObject.Find("GameManager").GetComponent<SceneManagement>();
+        S_SceneManagement = GameObject.Find("SceneManagement").GetComponent<SceneManagement>();
 
         //FindingCall_Buttons();
 
         S_SceneManagement._SceneIndex = 0 ;
 
-
+        DontDestroyOnLoad(gameObject);
     }
 
     //UPDATE
@@ -38,7 +40,9 @@ public class GameMenu : MonoBehaviour
     public void NewGame()
     {
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("MainScene");
+        NewGameInt = 1; /* 1 == true */
+        PlayerPrefs.SetInt("NewGameInt", 1);
+        SceneManager.LoadScene("DiaryScene");
 
     }
 

@@ -21,7 +21,7 @@ public class BacktoMainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("GameMenu");
 
         }
 

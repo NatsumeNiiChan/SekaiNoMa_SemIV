@@ -34,7 +34,8 @@ public class Dice : MonoBehaviour
     private GameObject B_Player_Odd;
     private GameObject B_Nanami_Even;
     private GameObject B_Nanami_Odd;
-    private GameObject B_NextRound;
+    private GameObject B_NextRoundNanami;
+    private GameObject B_NextRoundPlayer;
 
     [Header("ScoreCounters")]
     //Red = DANGER | Blue = SAFETY
@@ -51,6 +52,7 @@ public class Dice : MonoBehaviour
     [Header("EndScreens")]
     private GameObject _Screen_Win;
     private GameObject _Screen_Loss;
+    private GameObject _Screen_Tutorial;
 
     [Header("Bet Results")]
     private TMP_Text Txt_Bet_Nanami;
@@ -68,6 +70,8 @@ public class Dice : MonoBehaviour
     //bools for whose turn it is to bet first (player always starts in new round, nanami not)
     private bool _PlayerTurn = true;
     private bool _NanamiTurn = false;
+
+
 
 
 //START
@@ -95,7 +99,8 @@ public class Dice : MonoBehaviour
         _Screen_Loss.SetActive(false);
         _Screen_Win.SetActive(false);
         //Buttons
-        B_NextRound.SetActive(false);
+        B_NextRoundNanami.SetActive(false);
+        B_NextRoundPlayer.SetActive(false);
         B_Nanami_Even.SetActive(false);
         B_Nanami_Odd.SetActive(false);
 
@@ -112,6 +117,8 @@ public class Dice : MonoBehaviour
 //UPDATES
     void Update()
     {
+        
+
 
     }
 
@@ -124,6 +131,7 @@ public class Dice : MonoBehaviour
         _Even = true;
         _Odd = false;
         Txt_Bet_Player.text = "Player bet Even";
+        //Debug.Log("Player bet Even"); 
 
     } 
     public void _Bet_Odd()
@@ -131,6 +139,7 @@ public class Dice : MonoBehaviour
         _Odd = true;
         _Even = false;
         Txt_Bet_Player.text = "Player bet Odd";
+        //Debug.Log("Player bet Odd"); -> works
 
     }
 
@@ -139,9 +148,13 @@ public class Dice : MonoBehaviour
     //Roll Dice if Even or Odd are true (Button has been pressed)
     public void DiceRoll_Player()
     {
+        //Debug.Log(_PlayerTurn); -> works
+        //Debug.Log(_NanamiTurn); -> works
+
         if (_PlayerTurn == true && _NanamiTurn == false)
         {
-            
+            //Debug.Log("test"); -> works
+            //Debug.Log(_Odd);
 
             Debug.Log("Playerturn");            
             //DiceRolling Mechanic
@@ -152,6 +165,7 @@ public class Dice : MonoBehaviour
                 //Disable Even and Odd Buttons
                 B_Player_Odd.gameObject.SetActive(false);
                 B_Player_Even.gameObject.SetActive(false);
+               // Debug.Log("test");
 
                 // When _BetSet(Button clicked) true, then generate numbers (and roll dice)
                 // generate random number and place it on _DiceNumber
@@ -233,11 +247,12 @@ public class Dice : MonoBehaviour
                 TokenCalculation();
                 FinishMinigame();
 
+
                 //Next starter is nanami
                 _PlayerTurn = false;
                 _NanamiTurn = true;
 
-                B_NextRound.gameObject.SetActive(true);
+                B_NextRoundNanami.gameObject.SetActive(true);
 
                 _DiceSum = 0;
             }
@@ -325,10 +340,13 @@ public class Dice : MonoBehaviour
                 _Nanami_HasBet = false;
 
                 //Switch out the Buttons
-                
 
-                B_Player_Odd.SetActive(true);
-                B_Player_Even.SetActive(true);
+
+                B_Player_Even.SetActive(false);
+                B_Player_Odd.SetActive(false);
+
+
+                B_NextRoundPlayer.SetActive(true);
 
                 _DiceSum = 0;
             }
@@ -346,6 +364,11 @@ public class Dice : MonoBehaviour
         //Random number 1 or 2
         //1 == odd | 2 == even
         _Nanami_Even_Int = Random.Range(1, 3);
+
+       
+        PlayerBetTextReset();
+
+
         if (_Nanami_Even_Int == 1)
         {
             _Nanami_Even_Bool = false;
@@ -363,13 +386,23 @@ public class Dice : MonoBehaviour
         B_Nanami_Odd.SetActive(true);
         B_Nanami_Even.SetActive(true);
 
-        B_NextRound.SetActive(false);
+
+
+        B_NextRoundNanami.SetActive(false);
 
         _Nanami_HasBet = true;
-
+        
     }
 
+    public void _NextRoundPlayerBet()
+    {
+        NanamiBetTextReset();
 
+        B_Player_Even.SetActive(true);
+        B_Player_Odd.SetActive(true);
+
+        B_NextRoundPlayer.SetActive(false);
+    }
 
     //Calculate when which person gets how many tokens depending on their bets
     public void TokenCalculation()
@@ -382,6 +415,7 @@ public class Dice : MonoBehaviour
             {
                 //no trade
                 PrintTokenScores();
+
             }
             //Both bet EVEN
             else if (_Even == true && _Nanami_Even_Bool == true)
@@ -395,6 +429,7 @@ public class Dice : MonoBehaviour
                 _NanamiToken_Red -= 2;
                 _NanamiToken_Blue += 2;
                 PrintTokenScores();
+
             }
             //Player bet Odd, Nanami bet Even -> nanami Won
             else if (_Even == false && _Nanami_Even_Bool == true)
@@ -405,6 +440,7 @@ public class Dice : MonoBehaviour
                 //Nanami takes two Safety Tokens from Player
                 _NanamiToken_Blue += 2;
                 PrintTokenScores();
+
             }
             //Player bet Even, Nanami bet Odd -> player won
             else if (_Even == true && _Nanami_Even_Bool == false)
@@ -414,6 +450,7 @@ public class Dice : MonoBehaviour
                 //Nanami gives two Danger Tokens to Player
                 _NanamiToken_Red -= 2;
                 PrintTokenScores();
+                
             }
         }
 
@@ -425,6 +462,7 @@ public class Dice : MonoBehaviour
             {
                 //no trade
                 PrintTokenScores();
+                
             }
             //Both bet ODD
             else if (_Even == false && _Nanami_Even_Bool == false)
@@ -438,6 +476,7 @@ public class Dice : MonoBehaviour
                 _NanamiToken_Red -= 2;
                 _NanamiToken_Blue += 2;
                 PrintTokenScores();
+                
             }
             //Player bet even, Nanami bet ODD -> nanami won
             else if (_Even == true && _Nanami_Even_Bool == false)
@@ -448,6 +487,7 @@ public class Dice : MonoBehaviour
                 //Nanami takes two Safety Tokens from Player
                 _NanamiToken_Blue += 2;
                 PrintTokenScores();
+               
             }
             //Player bet odd, Nanami bet even -> player won
             else if (_Even == false && _Nanami_Even_Bool == true)
@@ -457,6 +497,7 @@ public class Dice : MonoBehaviour
                 //Nanami gives two Danger Tokens to Player
                 _NanamiToken_Red -= 2;
                 PrintTokenScores();
+                
             }
         }
 
@@ -479,7 +520,8 @@ public class Dice : MonoBehaviour
         {
             Debug.Log("Game finished successfully: All Tokens traded");
             _Screen_Win.SetActive(true);
-            Invoke("LoadMainScene", 5);
+            PlayerPrefs.DeleteAll();
+            //Invoke("EndCutscene", 5);
         }
         else if (_PlayerToken_Red == 10 && _PlayerToken_Blue == 10)
         {
@@ -500,11 +542,25 @@ public class Dice : MonoBehaviour
         
     }
 
-    public void LoadMainScene()
+    public void LoadEndCutscene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("EndCutscene");
     }
 
+    public void CloseTutorial()
+    {
+        _Screen_Tutorial.SetActive(false);
+
+    }
+
+    public void NanamiBetTextReset()
+    {
+        Txt_Bet_Nanami.text = "[Nanami]";
+    }
+    public void PlayerBetTextReset()
+    {
+        Txt_Bet_Player.text = "[Player]";
+    }
 
 
 //FINDING CALL FUNCTIONS
@@ -526,7 +582,8 @@ public class Dice : MonoBehaviour
         B_Nanami_Even = GameObject.Find("B_Nanami_Even");
         B_Nanami_Odd = GameObject.Find("B_Nanami_Odd");
 
-        B_NextRound = GameObject.Find("NanamisBet");
+        B_NextRoundNanami = GameObject.Find("NanamisBet");
+        B_NextRoundPlayer = GameObject.Find("PlayerBet");
 
     }
 
@@ -551,6 +608,7 @@ public class Dice : MonoBehaviour
     {
         _Screen_Win = GameObject.Find("Screen_Win");
         _Screen_Loss = GameObject.Find("Screen_Loss");
+        _Screen_Tutorial = GameObject.Find("Screen_Tutorial");
 
     }
 

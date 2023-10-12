@@ -108,10 +108,17 @@ public class MouseRay : MonoBehaviour
 
         //_DontDestroyObject = GameObject.Find("_DontDestroyObject");
 
-
+        RamenType();
 
         //Set Cupboard_Doors Vanilla Positions
         A_DoorVanillaPosition = A_CupboardDoor.Select(p => p.transform.position).ToArray();
+
+        //DontDestroyOnLoad(gameObject);
+
+        
+
+
+
 
     }
 
@@ -455,7 +462,7 @@ public class MouseRay : MonoBehaviour
         if (_IngredientCounter == 9 && _KikakuRamen == true)
         {
             Debug.Log(_KikakuRamen);
-            if (A_ToolChosen[1] && A_ToolChosen[0] && A_IngredientChosen[0] && A_IngredientChosen[5] && A_IngredientChosen[9] && A_IngredientChosen[1] && A_IngredientChosen[10] && A_IngredientChosen[2] && A_IngredientChosen[4])
+            if (A_ToolChosen[1] && A_ToolChosen[0] && A_IngredientChosen[0] && A_IngredientChosen[5] && A_IngredientChosen[10] && A_IngredientChosen[1] && A_IngredientChosen[8] && A_IngredientChosen[2] && A_IngredientChosen[4])
             {
                 _KikakuCorrect = true;
                 _IngredientCounter = 0;
@@ -533,6 +540,7 @@ public class MouseRay : MonoBehaviour
         Debug.Log("Recipe on");
         if (_KikakuRamen == true)
         {
+            Debug.Log("Test");
             _RecipeOvergroup.SetActive(true);
             _KikakuUI.SetActive(true);
             _TonbaraUI.SetActive(false);
@@ -540,10 +548,32 @@ public class MouseRay : MonoBehaviour
         }
         if (_TonbaraRamen == true)
         {
+            Debug.Log("Test");
             _RecipeOvergroup.SetActive(true);
             _TonbaraUI.SetActive(true);
             _KikakuUI.SetActive(false);
         }
+
+    }
+
+    public void RamenType()
+    {
+        if (S_Dialog._DialogCounter == 0)
+        {
+            _KikakuRamen = false;
+            _TonbaraRamen = true;
+        }
+        if (S_Dialog._DialogCounter == 1)
+        {
+            _KikakuRamen = true;
+            _TonbaraRamen = false;
+        }
+        if (S_Dialog._DialogCounter == 2)
+        {
+            _KikakuRamen = false;
+            _TonbaraRamen = true;
+        }
+
 
     }
 
@@ -576,11 +606,11 @@ public class MouseRay : MonoBehaviour
             RamenProgress.SetActive(false);
             if (_KikakuRamen == true)
             {
-                KikakuDone.SetActive(false);
+                KikakuDone.SetActive(true);
             }
             if (_TonbaraRamen == true)
             {
-                TonbaraDone.SetActive(false);
+                TonbaraDone.SetActive(true);
             }
             
             

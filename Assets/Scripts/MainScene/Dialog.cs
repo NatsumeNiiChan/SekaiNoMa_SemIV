@@ -35,7 +35,7 @@ public class Dialog : MonoBehaviour
         //Get Scripts
         //S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
         S_Dialog_Text = GameObject.Find("DialogManager").GetComponent<Dialog_Text>();
-        S_MouseRay = GameObject.Find("GameManager").GetComponent<MouseRay>();
+        S_MouseRay = GameObject.FindWithTag("ManagerMain").GetComponent<MouseRay>();
 
 
         //Get Stuff
@@ -43,7 +43,7 @@ public class Dialog : MonoBehaviour
         Txt_Dialog = GameObject.Find("Txt_Dialog").GetComponent<TextMeshProUGUI>();
         //_TextBox.SetActive(false);
 
-
+        PlayerPrefs.SetInt("NewGameInt", 0);
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         _DialogCounter = 0;
@@ -84,7 +84,7 @@ public class Dialog : MonoBehaviour
     {
         if (_TextBox.activeSelf)
         {
-            if (_CharacterCounter == 0) /* Takeru */
+            if (_CharacterCounter == 0 && _DialogCounter == 0 && _Index == 0) /* Takeru */
             {
                 //call animation
                 S_MouseRay.TakeruStartAnimator.SetTrigger("TakeruStart");
@@ -361,7 +361,7 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Mamoru_General.Length -1)
             {
                 Debug.Log("Dialog End");
-                _Index = 0;
+
 
             }
         }
@@ -489,7 +489,7 @@ public class Dialog : MonoBehaviour
             else if (_Index == S_Dialog_Text.A_Dialog_Nanami_General.Length - 1)
             {
                 Debug.Log("Dialog End");
-                _Index = 0;
+
 
             }
         }
@@ -538,9 +538,9 @@ public class Dialog : MonoBehaviour
         PlayerPrefs.SetInt("_CharacterCounter", _CharacterCounter);
         PlayerPrefs.SetInt("_DialogCounter", _DialogCounter);
 
-        Debug.Log(_Index);
-        Debug.Log(_CharacterCounter);
-        Debug.Log(_DialogCounter);
+        //Debug.Log(_Index);
+        //Debug.Log(_CharacterCounter);
+        //Debug.Log(_DialogCounter);
     }
     public void LoadData()
     {
@@ -548,9 +548,9 @@ public class Dialog : MonoBehaviour
         _CharacterCounter = PlayerPrefs.GetInt("_CharacterCounter");
         _DialogCounter = PlayerPrefs.GetInt("_DialogCounter");
 
-        Debug.Log(_Index);
-        Debug.Log(_CharacterCounter);
-        Debug.Log(_DialogCounter);
+        //Debug.Log(_Index);
+        //.Log(_CharacterCounter);
+        //Debug.Log(_DialogCounter);
     }
 
     public void B_DialogFunction()

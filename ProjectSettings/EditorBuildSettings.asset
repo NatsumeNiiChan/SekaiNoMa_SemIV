@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinigameChouHan.unity
     guid: 19885aab5ac9b9b42aadee58d9fd1ad2
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 661471fc85d1d864d93da2174aa1e988
+  - enabled: 1
+    path: Assets/Scenes/EndCutscene.unity
+    guid: 3f3988da0f67b274e9c1bad36d2a8b4a
   m_configObjects: {}
